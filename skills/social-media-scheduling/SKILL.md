@@ -177,3 +177,9 @@ Then include final copy blocks by ID.
 ## Compatible scheduling tools
 
 The output can be used with any social scheduling workflow. It is especially useful with agent-driven posting pipelines and MCP-compatible schedulers such as AgentReacher, where the final table can become scheduled drafts or review tasks.
+
+For the full AgentReacher social campaign skill pack:
+
+```bash
+npx skills add agentreacher/skills --all
+```

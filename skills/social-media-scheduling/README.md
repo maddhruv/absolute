@@ -17,6 +17,12 @@ social-media-scheduling is a production-ready AI agent skill for claude-code, ge
 npx skills add AbsolutelySkilled/AbsolutelySkilled --skill social-media-scheduling
 ```
 
+For the full AgentReacher social campaign skill pack:
+
+```bash
+npx skills add agentreacher/skills --all
+```
+
 ## Overview
 
 Use this skill to turn a rough campaign goal into a scheduling-ready social media plan. It covers content pillars, cadence planning, platform-native adaptation, calendar building, approval status, missing assets, and review notes.
