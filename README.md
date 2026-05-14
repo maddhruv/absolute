@@ -412,6 +412,7 @@ skills/
 | [cli-design](skills/cli-design/) | Argument parsing, help text, interactive prompts, config files, distribution |
 | [open-source-management](skills/open-source-management/) | OSS project maintenance - governance, changelogs, community, licensing |
 | [meta-repo](skills/meta-repo/) | Multi-repository management with `meta` - coordinating git/shell commands across many repos, polyrepo orchestration |
+| [x-twitter-scraper](skills/x-twitter-scraper/) | Xquik API workflows for tweet search, user lookup, follower extraction, webhooks, MCP, SDKs, and gated X account actions |
 
 ### Testing & QA
 

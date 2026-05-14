@@ -4,7 +4,7 @@
 
 version: 1.0.0
 generated: '2026-03-29'
-total_skills: 153
+total_skills: 154
 skills:
 - name: a2a-protocol
   version: 0.1.0
@@ -814,6 +814,11 @@ skills:
   description: Use this skill when working with Vite+, vp CLI, or the VoidZero unified toolchain. Triggers on project scaffolding with vp create, migrating existing Vite projects with vp migrate, running
     dev/build/test/lint/fmt commands, configuring vite.config.ts with lint/fmt/test/run/pack/staged blocks, managing Node.js versions with vp env, monorepo task execution with vp run, and library packaging
     with vp pack. Also triggers on references to Oxlint, Oxfmt, Rolldown, tsdown, Vitest, or Vite Task in a Vite+ context.
+  category: devtools
+- name: x-twitter-scraper
+  version: 0.1.0
+  description: Use this skill when working with Xquik's X Twitter Scraper API for tweet search, user lookup, follower extraction, media workflows, monitors, webhooks, MCP tools, SDKs, and confirmation-gated
+    X account actions. Triggers on Twitter API alternatives, X API automation, scrape tweets, profile tweets, follower export, send tweets, post replies, DMs, and X/Twitter data pipelines.
   category: devtools
 - name: web3-smart-contracts
   version: 0.1.0

@@ -1,0 +1,32 @@
+# All URLs must be from official documentation only.
+
+skill: x-twitter-scraper
+crawled: 2026-05-10
+sources:
+  - url: https://docs.xquik.com/api-reference/overview
+    type: api-reference
+    description: Xquik REST API overview, authentication, request conventions, rate limits, and response patterns
+    accessed: 2026-05-10
+    sections_used:
+      - Authentication
+      - Rate limits
+      - Response format
+      - Error handling
+
+  - url: https://docs.xquik.com/guides/billing
+    type: guide
+    description: Xquik billing guide for credits, subscriptions, pay-per-use, and confirmation-sensitive billing workflows
+    accessed: 2026-05-10
+    sections_used:
+      - Credits
+      - Subscriptions
+      - Pay-per-use
+      - Estimates
+
+  - url: https://xquik.com/.well-known/mcp.json
+    type: discovery
+    description: Public MCP discovery document for Xquik agent access
+    accessed: 2026-05-10
+    sections_used:
+      - MCP server metadata
+      - Tool access metadata
