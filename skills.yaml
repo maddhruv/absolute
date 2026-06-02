@@ -4,7 +4,7 @@
 
 version: 1.0.0
 generated: '2026-03-29'
-total_skills: 154
+total_skills: 155
 skills:
 - name: a2a-protocol
   version: 0.1.0
@@ -715,6 +715,13 @@ skills:
   description: AI-native software development lifecycle that replaces traditional SDLC. Triggers on "plan and build", "break this into tasks", "build this feature end-to-end", "sprint plan this", "absolute-human
     this", or any multi-step development task. Decomposes work into dependency-graphed sub-tasks, executes in parallel waves with TDD verification, and tracks progress on a persistent board. Handles features,
     refactors, greenfield projects, and migrations.
+  category: engineering
+- name: software-engineering
+  version: 0.1.0
+  description: Use this skill for ANY software or code work - building features, fixing bugs, refactoring, designing systems, scaffolding projects, writing or modifying code, planning implementations, or
+    making architectural decisions. Triggers on feature requests, "build this", "add X", "implement", "refactor", "fix this bug", "design", "plan and build", "break this into tasks", greenfield projects, and
+    migrations. Adapts depth to complexity, taking a light path for trivial fixes and a full design -> decompose -> parallel-execute -> verify lifecycle for complex work. Combines a relentless design interview with
+    AI-native execution (dependency-graphed waves, TDD, generator-evaluator review).
   category: engineering
 - name: absolute-seo
   version: 1.0.0
