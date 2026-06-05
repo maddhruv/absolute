@@ -1,6 +1,6 @@
 # AbsolutelySkilled
 
-A registry of production-ready skills for AI coding agents. 160+ skills across 25 categories.
+A focused toolkit of production-ready skills for AI coding agents: absolute-work, absolute-ui, and absolute-simplify.
 
 ## Project Structure
 
@@ -40,12 +40,9 @@ Write 10-15 evals covering:
 - 1-2 anti-hallucination tests
 - 1 references load test
 
-## Creating Skills
+## Maintaining Skills
 
-Use the `skill-forge` skill to generate new skills:
-```
-/skill-forge <url-or-topic>
-```
+This is a focused 3-skill toolkit (absolute-work, absolute-ui, absolute-simplify) — not an open registry. When editing a skill, keep its `SKILL.md`, `README.md`, and `evals.json` in sync and re-run the website build to verify.
 
 ## Package Manager
 

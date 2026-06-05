@@ -13,7 +13,7 @@ description: >
   Language-agnostic at base with deep opinions for JS/TS/React, Python, and Go.
 category: workflow
 tags: [simplification, refactoring, clean-code, autonomous, code-quality, clarity]
-recommended_skills: [clean-code, refactoring-patterns, clean-architecture, code-review-mastery]
+recommended_skills: [absolute-work, absolute-ui]
 platforms:
   - claude-code
   - gemini-cli
@@ -72,11 +72,11 @@ Trigger this skill when the user:
 - Has just finished writing code and wants it polished before committing
 
 Do NOT trigger this skill for:
-- Adding new features or functionality (use absolute-brainstorm instead)
+- Adding new features or functionality (use absolute-work instead)
 - Fixing bugs where behavior needs to change
 - Performance optimization (simplification targets readability, not speed)
-- Architecture-level redesign (use clean-architecture instead)
-- Code review that should only produce findings, not edits (use code-review-mastery)
+- Architecture-level redesign (use absolute-work instead)
+- Code review that should only produce findings, not edits
 
 ---
 

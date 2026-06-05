@@ -11,7 +11,7 @@ description: >
   design principles.
 category: engineering
 tags: [ui, ux, design, css, tailwind, accessibility]
-recommended_skills: [accessibility-wcag, frontend-developer]
+recommended_skills: [absolute-work, absolute-simplify]
 platforms:
   - claude-code
   - gemini-cli

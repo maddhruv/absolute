@@ -107,8 +107,8 @@ The difference between AI slop and a polished UI comes down to intent, restraint
 
 Pair absolute-ui with these complementary skills:
 
-- [accessibility-wcag](https://www.absolutelyskilled.pro/skill/accessibility-wcag)
-- [frontend-developer](https://www.absolutelyskilled.pro/skill/frontend-developer)
+- [absolute-work](https://www.absolutelyskilled.pro/skill/absolute-work)
+- [absolute-simplify](https://www.absolutelyskilled.pro/skill/absolute-simplify)
 
 ## Frequently Asked Questions
 

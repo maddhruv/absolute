@@ -37,10 +37,8 @@ npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-simplify
 
 Pair absolute-simplify with these complementary skills:
 
-- [clean-code](https://www.absolutelyskilled.pro/skill/clean-code)
-- [refactoring-patterns](https://www.absolutelyskilled.pro/skill/refactoring-patterns)
-- [clean-architecture](https://www.absolutelyskilled.pro/skill/clean-architecture)
-- [code-review-mastery](https://www.absolutelyskilled.pro/skill/code-review-mastery)
+- [absolute-work](https://www.absolutelyskilled.pro/skill/absolute-work)
+- [absolute-ui](https://www.absolutelyskilled.pro/skill/absolute-ui)
 
 ## Frequently Asked Questions
 

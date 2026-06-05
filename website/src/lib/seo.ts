@@ -4,7 +4,7 @@ import { getCategoryMeta } from './categories';
 const SITE = 'https://www.absolutelyskilled.pro';
 const SITE_NAME = 'AbsolutelySkilled';
 const DEFAULT_DESCRIPTION =
-  'A registry of 161+ production-ready skills for AI coding agents. Browse, search, and install skills for Claude Code, Gemini CLI, OpenAI Codex, and more.';
+  'A focused toolkit of production-ready skills for AI coding agents. Browse, search, and install skills for Claude Code, Gemini CLI, OpenAI Codex, and more.';
 
 export interface BreadcrumbItem {
   name: string;
@@ -28,7 +28,7 @@ export function getHomePageSEO() {
   const faqEntries = [
     {
       q: 'What is AbsolutelySkilled?',
-      a: 'AbsolutelySkilled is an open-source registry of 161+ production-ready skills for AI coding agents. Skills teach AI agents like Claude Code, Gemini CLI, and OpenAI Codex specialized knowledge - from software engineering to marketing strategy.',
+      a: 'AbsolutelySkilled is a focused, open-source toolkit of production-ready skills for AI coding agents. Skills teach AI agents like Claude Code, Gemini CLI, and OpenAI Codex specialized knowledge - from end-to-end development workflows to UI design and code simplification.',
     },
     {
       q: 'What AI agents are supported?',

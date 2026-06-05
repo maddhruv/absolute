@@ -5,7 +5,7 @@
 <h1 align="center">AbsolutelySkilled</h1>
 
 <p align="center">
-  A registry of production-ready skills for AI coding agents.
+  A focused toolkit of production-ready skills for AI coding agents.
   <br />
   <a href="https://www.absolutelyskilled.pro/">www.absolutelyskilled.pro</a>
   <br /><br />
@@ -18,229 +18,86 @@
 
 ## What is this?
 
-AbsolutelySkilled is a collection of skills that teach AI agents domain-specific knowledge - from framework APIs to marketing strategy. Each skill is a self-contained folder with structured markdown that agents load on demand.
+AbsolutelySkilled is a focused toolkit that turns an AI coding agent into an autonomous development partner. Instead of a sprawling registry, it ships **three opinionated skills** that cover the loop you actually run every day: **think → plan → build → polish**.
 
 Skills work with any agent that supports the SKILL.md format: Claude Code, Gemini CLI, OpenAI Codex, Cursor, and [40+ more agents](#supported-agents).
 
+| Skill | What it does |
+|---|---|
+| [absolute-work](skills/absolute-work/) | End-to-end, phase-gated SDLC — brainstorm → spec → task board → safe-wave execution → verify |
+| [absolute-ui](skills/absolute-ui/) | Build polished, modern UIs — spacing, color, typography, components, accessibility, animations |
+| [absolute-simplify](skills/absolute-simplify/) | Autonomously simplify your working changes — reduce complexity, remove redundancy, keep tests green |
+
 ---
 
-## Flagship Skills
+## The Skills
 
-These skills form the backbone of AbsolutelySkilled - install them first and watch your AI agent transform from a code assistant into an autonomous development partner.
+### Absolute Work — End-to-End Development Lifecycle
 
-### Absolute Brainstorm - Relentless Design Interview
-
-A structured design interrogation that reads your entire codebase before asking a single question - every assumption challenged, every dependency resolved, one decision at a time.
+One continuous, phase-gated lifecycle that takes any unit of work — a ticket, task, plan, or migration — from fuzzy intent to verified code. It relentlessly interviews you to a shared design, writes and self-reviews a spec, decomposes the work into a dependency-graphed task board, then peels tasks off one safe wave at a time with test-first verification.
 
 **Install:**
 
 ```bash
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-brainstorm
+npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-work
 ```
 
 **Usage:**
 
 ```bash
-/absolute-brainstorm "Add real-time notifications to our app"
-/absolute-brainstorm "Redesign the authentication flow to support SSO"
-/absolute-brainstorm "Build a platform with chat, billing, analytics, and admin dashboard"
+/absolute-work "Add OAuth2 login with Google and GitHub providers"
+/absolute-work "Pick up this ticket: migrate the REST API from v2 to v3"
+/absolute-work "Grill me on my plan for a real-time chat feature, then build it"
 ```
 
 **How it works:**
 
-1. **Reads everything** - docs/, README, CLAUDE.md, recent commits, project structure
-2. **Explores the codebase** - searches code before every question so it only asks what can't be inferred
-3. **Enters plan mode** - all reasoning happens in plan mode with ultrathink-level depth
-4. **One question at a time** - strictly linear, dependency-resolved. Decision B is never asked until Decision A is locked
-5. **Marks (Recommended)** on every option set - with clear rationale, no wishy-washy "it depends"
-6. **No fake options** - only proposes multiple approaches at genuine design forks. If the answer is obvious, says so
-7. **Decomposes large projects** - flags multi-system requests and breaks them into sub-projects automatically
-8. **Writes a spec** to `docs/plans/YYYY-MM-DD-<topic>-design.md`
-9. **Self-reviews via subagent** - catches gaps and contradictions before you see it
-10. **You choose what's next** - writing-plans, absolute-human, direct implementation, or something else
+1. **Intake & Brainstorm** — deep context scan, codebase-first questioning, adaptive question banks per work type, relentless one-at-a-time interview to mutual 100% confidence
+2. **Spec** — writes the approved design to `docs/plans/`, then a separate reviewer subagent grades it on a scored rubric
+3. **Decompose & Plan** — atomic tasks, a dependency graph, and safe-wave assignment on `.absolute-work/board.md`
+4. **Execute** — onion-peel one wave at a time; blockers run sequentially, only provably-independent tasks parallelize; TDD per task
+5. **Verify** — binary signals (test/lint/typecheck/build), then an independent scored evaluator
+6. **Converge** — full suite, summary, close the board, suggest a commit (never auto-commit)
 
-### Absolute-Human - AI-Native Development Lifecycle
+It **stops at a hard gate between every phase** so you stay in control, and tracks everything on a persistent local `.absolute-work/board.md` that survives across sessions — resume where you left off, audit decisions, or hand off to another developer.
 
-A complete SDLC replacement for AI agents - decomposes features into dependency-graphed tasks, executes them in parallel waves with TDD verification, and tracks everything on a persistent board.
+```
+INTAKE & BRAINSTORM ─ gate ─ SPEC ─ gate ─ DECOMPOSE & PLAN ─ gate ─ EXECUTE ─ gate ─ VERIFY ─ gate ─ CONVERGE
+```
+
+### Absolute UI — Polished Interface Design
+
+The most comprehensive UI design knowledge base for AI coding agents — 25 reference guides covering typography, color theory, layout systems, dark mode, animations, accessibility, dashboards, and more. Every recommendation ships with concrete CSS/Tailwind values, not vague advice.
 
 **Install:**
 
 ```bash
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-human
+npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-ui
 ```
 
 **Usage:**
 
 ```bash
-/absolute-human "Add OAuth2 login with Google and GitHub providers"
-/absolute-human "Migrate the REST API to GraphQL"
-/absolute-human "Build a real-time chat feature with WebSocket support"
+/absolute-ui "Design a pricing page for my SaaS"
+/absolute-ui "Make this dashboard feel less like AI slop"
 ```
 
-**How it works:**
+### Absolute Simplify — Autonomous Code Simplification
 
-1. **Interview** - extracts requirements, constraints, and success criteria
-2. **Decompose** - breaks work into a dependency-graphed DAG of atomic sub-tasks
-3. **Discover** - explores your codebase and docs in parallel per task
-4. **Plan** - creates test-first implementation strategies per task
-5. **Execute** - runs independent tasks simultaneously via sub-agents in parallel waves
-6. **Verify** - validates every task with TDD, lint, typecheck, and build checks
-7. **Converge** - self code review, requirements validation, and full project verification
-
-Everything is tracked on a persistent `.absolute-human/board.md` that survives across sessions - resume where you left off, audit decisions, or hand off to another developer.
-
-```
-INTAKE --> DECOMPOSE --> DISCOVER --> PLAN --> EXECUTE --> VERIFY --> CONVERGE
-```
-
-### Second Brain - Persistent Memory for AI Agents
-
-A structured, hierarchical knowledge store in `~/.memory/` that gives your AI agent persistent memory across projects, sessions, and tools - automatically loading only what's relevant to the current context.
+Detects your staged or unstaged git changes, analyzes them for simplification opportunities following clean code and clean architecture principles, applies the improvements directly, runs your tests to verify nothing broke, and shows a structured summary with reasoning.
 
 **Install:**
 
 ```bash
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill second-brain
+npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-simplify
 ```
 
 **Usage:**
 
 ```bash
-# Memories are loaded automatically at conversation start
-# After complex tasks, your agent proposes what to remember
-
-"Remember that we always use Bun instead of npm"
-"What do you know about our auth system?"
-"Update my memory about the deployment process"
+/absolute-simplify
+/absolute-simplify "clean up my changes in src/api/"
 ```
-
-**How it works:**
-
-- **Tag-indexed retrieval** - memories are scored against your current context and only the top matches are loaded (no wasted tokens)
-- **100-line ceiling** - files stay small and split automatically, keeping context window usage efficient
-- **Wiki-linked graph** - memories cross-reference each other with `[[wiki-links]]` for rich knowledge traversal
-- **Auto-propose learnings** - after complex tasks, your agent suggests what to remember for next time
-- **CRUSP lifecycle** - Create, Read, Update, Split, Prune - your memory stays fresh and organized
-
-### Skill Audit - Security Analysis for AI Agent Skills
-
-A deep, context-aware security scanner for AI agent skills - combines a Python mechanical pre-scan with AI-powered semantic analysis across 6 threat categories to catch prompt injection, data exfiltration, supply chain attacks, and behavioral risks that regex tools miss.
-
-**Install:**
-
-```bash
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill skill-audit
-```
-
-**Usage:**
-
-```bash
-/skill-audit skills/suspicious-tool
-/skill-audit skills/suspicious-tool --json
-/skill-audit skills/                          # Batch scan entire registry
-```
-
-**How it works:**
-
-1. **Mechanical pre-scan** - `scripts/audit.py` handles deterministic checks: unicode smuggling, base64 payloads, frontmatter validation, file size limits, phantom dependencies, orphaned references
-2. **Prompt injection analysis** - reads every instruction as an attacker would: direct overrides, persona hijacking, instruction laundering, conditional triggers, multi-step manipulation
-3. **Permission and exfiltration audit** - flags destructive commands, credential access, webhook data theft, DNS exfiltration, covert channels
-4. **Supply chain verification** - maintainer provenance, dependency confusion, typosquatting, suspicious URLs, scope creep detection
-5. **Behavioral safety** (AI-only) - unbounded agent loops, user consent bypass, hallucination amplification, context pollution, trust transitivity
-6. **Structured verdicts** - PASS / FAIL / REVIEW REQUIRED with severity-ranked findings table and per-finding recommendations
-
-Output as a human-readable table report (default) or JSON for CI/tooling integration.
-
-### Video Creator - End-to-End Programmatic Video Production
-
-A 7-step orchestrator that takes you from "make me a video about X" to a finished 4K video - using Remotion, ElevenLabs TTS, royalty-free music, and SFX. No video editing knowledge required.
-
-**Install:**
-
-```bash
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill video-creator
-```
-
-**Usage:**
-
-```bash
-/video-creator "Create a 60-second product demo for my SaaS dashboard"
-/video-creator "Make an explainer video about how our API works"
-/video-creator "Build a social clip announcing our new feature"
-```
-
-**How it works:**
-
-1. **Deep interview** - up to 30 questions about your product, audience, tone, assets, and visual preferences
-2. **Generate script** - structured YAML with scenes, timing, narration text, and audio cues
-3. **Visual verification** - build minimal Remotion compositions, preview in browser, iterate on design
-4. **Build full project** - complete Remotion compositions with all animations matching the approved script
-5. **Add background audio + SFX** - source royalty-free music, place sound effects at trigger points
-6. **Add narration** - ElevenLabs TTS with voice selection (deferred to save costs until visuals are approved)
-7. **4K render** - final preview, user approval, render at 3840x2160
-
-Companion skills: [remotion-video](skills/remotion-video/), [video-scriptwriting](skills/video-scriptwriting/), [video-audio-design](skills/video-audio-design/), [video-analyzer](skills/video-analyzer/)
-
-### Supaguard - Synthetic Monitoring from Your Codebase
-
-A production monitoring skill that reads your source code, generates Playwright monitoring scripts, and deploys them as recurring checks via the supaguard CLI - all without committing any test scripts to your repository.
-
-**Install:**
-
-```bash
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill supaguard
-```
-
-**Usage:**
-
-```bash
-# Point at your app and the agent does the rest
-"Set up monitoring for my Next.js app"
-"Monitor the login flow on production"
-"Create an uptime check for our checkout page"
-```
-
-**How it works:**
-
-1. **Reads your source code** - scans components, routes, data-testids, API endpoints, and forms
-2. **Identifies critical flows** - login, checkout, page load, dashboard access
-3. **Generates Playwright scripts** - written to `/tmp/`, never committed to your repo
-4. **Tests in the cloud** - runs the script via `supaguard checks test` before deploying
-5. **Interactive deployment** - walks you through naming, scheduling, regions, and alerting one step at a time
-6. **Multi-region monitoring** - US East, EU North, India Central with configurable cron schedules
-
-Companion skills: [playwright-testing](skills/playwright-testing/), [cli-design](skills/cli-design/)
-
-### Codedocs - AI-Agent-Friendly Codebase Documentation
-
-Generates a structured `docs/` tree from your codebase that AI agents can navigate instantly - module docs, pattern docs, an overview map, and a file-to-doc index with 70%+ coverage enforcement.
-
-**Install:**
-
-```bash
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill codedocs
-```
-
-**Usage:**
-
-```bash
-codedocs:generate                              # Generate docs for your entire repo
-codedocs:generate --output documentation/      # Custom output directory
-codedocs:generate packages/api                 # Specific subdirectory (monorepos)
-codedocs:generate --exhaustive                 # Force exhaustive coverage
-codedocs:ask "how does the auth flow work?"    # Answer from docs, not source
-codedocs:status                                # Check coverage and find gaps
-codedocs:update --scope src/auth/              # Update after a refactor
-codedocs:update --diff HEAD~5..HEAD            # Update from recent commits
-```
-
-**How it works:**
-
-- **OVERVIEW.md** - architecture, tech stack, entry points, and a module map that routes any question to the right doc
-- **Module docs** - one per bounded context, covering public API, internal structure, dependencies, and implementation notes. Large modules (15+ files) are automatically split into sub-module docs
-- **Pattern docs** - cross-cutting concerns like error handling, logging, auth, and testing strategy documented once instead of scattered across every module
-- **INDEX.md** - a file-to-module lookup table so any agent can instantly answer "which doc covers this file?"
-- **Coverage-first** - runs a recursive census of your repo, verifies 70%+ file coverage (scaled by repo size), and flags gaps before writing. A huge repo generates 30-80 doc files, not 8-12
 
 ---
 
@@ -251,17 +108,17 @@ Skills are installed using the [`skills`](https://github.com/vercel-labs/skills)
 ### Quick Start
 
 ```bash
-# Install all skills from this registry
+# Install all skills from this toolkit
 npx skills add AbsolutelySkilled/AbsolutelySkilled
 
 # List available skills before installing
 npx skills add AbsolutelySkilled/AbsolutelySkilled --list
 
 # Install a specific skill
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill clean-code
+npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-work
 
 # Install multiple specific skills
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill clean-code --skill backend-engineering
+npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-work --skill absolute-ui
 
 # Install globally (available across all projects)
 npx skills add AbsolutelySkilled/AbsolutelySkilled -g
@@ -270,7 +127,7 @@ npx skills add AbsolutelySkilled/AbsolutelySkilled -g
 npx skills add AbsolutelySkilled/AbsolutelySkilled -a claude-code
 
 # Non-interactive install (CI/CD friendly)
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill clean-code -g -a claude-code -y
+npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-work -g -a claude-code -y
 
 # Install all skills to all agents
 npx skills add AbsolutelySkilled/AbsolutelySkilled --all
@@ -324,328 +181,20 @@ The CLI supports 40+ agents including Claude Code, Codex, Cursor, Gemini CLI, Gi
 skills/
   <skill-name>/
     SKILL.md           # Core skill content (under 500 lines)
+    README.md          # Skill landing page (powers the website)
     evals.json         # Test suite validating the skill works
-    sources.yaml       # Crawl provenance (optional for domain skills)
     references/        # Deep-dive files loaded on demand
       <topic>.md
+website/               # Astro + Tailwind site, reads skills/*/README.md
 ```
 
-## Available Skills
+## Recommended Workflow
 
-### Software Engineering
+The three skills are designed to chain into one loop:
 
-| Skill | Description |
-|---|---|
-| [clean-code](skills/clean-code/) | Clean Code principles - naming, functions, SOLID, TDD, code smells, error handling |
-| [clean-architecture](skills/clean-architecture/) | Clean Architecture principles - dependency rule, layers, boundaries, component design |
-| [backend-engineering](skills/backend-engineering/) | Backend systems design - databases, APIs, distributed systems, caching, observability |
-| [frontend-developer](skills/frontend-developer/) | Frontend engineering - components, performance, accessibility, CSS patterns, testing |
-| [absolute-brainstorm](skills/absolute-brainstorm/) | Relentless design interview - ultrathink reasoning, codebase-first questions, dependency-resolved decision trees |
-| [absolute-human](skills/absolute-human/) | AI-native development lifecycle - task decomposition, dependency graphs, wave-based parallel execution |
-| [system-design](skills/system-design/) | Distributed systems, load balancing, CAP theorem, architecture interviews |
-| [microservices](skills/microservices/) | Service decomposition, communication patterns, saga, CQRS |
-| [api-design](skills/api-design/) | REST, GraphQL, gRPC, OpenAPI spec, versioning, pagination |
-| [database-engineering](skills/database-engineering/) | Schema design, indexing, query optimization, migrations |
-| [performance-engineering](skills/performance-engineering/) | Profiling, benchmarking, memory leaks, latency optimization |
-| [absolute-simplify](skills/absolute-simplify/) | Autonomous code simplification - clean code, reduce complexity, remove redundancy |
-| [refactoring-patterns](skills/refactoring-patterns/) | Extract method, replace conditional with polymorphism, catalog of refactors |
-| [monorepo-management](skills/monorepo-management/) | Turborepo, Nx, Bazel, workspace dependencies, build caching |
-| [code-review-mastery](skills/code-review-mastery/) | Reviewing code effectively, giving actionable feedback, catching anti-patterns |
-| [address-pr-comments](skills/address-pr-comments/) | Address PR review comments - read open threads, make code changes, post batch replies via gh CLI |
-| [live-dependency-resolver](skills/live-dependency-resolver/) | Live package version lookup across npm, pip, Go, cargo, gem - never hallucinate versions |
-| [edge-computing](skills/edge-computing/) | Edge functions, CDN logic, Cloudflare Workers, latency optimization |
-| [event-driven-architecture](skills/event-driven-architecture/) | Event sourcing, CQRS, message brokers, eventual consistency |
-| [localization-i18n](skills/localization-i18n/) | Translation workflows, RTL, pluralization, ICU message format |
-
-### DevOps & Infrastructure
-
-| Skill | Description |
-|---|---|
-| [docker-kubernetes](skills/docker-kubernetes/) | Containerization, orchestration, Helm charts, service mesh |
-| [ci-cd-pipelines](skills/ci-cd-pipelines/) | GitHub Actions, Jenkins, GitLab CI, deployment strategies |
-| [terraform-iac](skills/terraform-iac/) | Infrastructure as code, modules, state management, drift detection |
-| [cloud-aws](skills/cloud-aws/) | AWS services, well-architected framework, cost optimization |
-| [cloud-gcp](skills/cloud-gcp/) | GCP services, BigQuery, Cloud Run, Pub/Sub patterns |
-| [observability](skills/observability/) | Logging, metrics, tracing, alerting, SLOs, incident response |
-| [signoz](skills/signoz/) | Open-source observability - distributed tracing, logs, metrics, dashboards, OpenTelemetry |
-| [sentry](skills/sentry/) | Error monitoring, performance tracing, session replay, cron monitoring, source maps |
-| [linux-admin](skills/linux-admin/) | Shell scripting, systemd, networking, security hardening |
-| [site-reliability](skills/site-reliability/) | SRE practices, error budgets, toil reduction, capacity planning |
-| [email-deliverability](skills/email-deliverability/) | SPF, DKIM, DMARC, warm-up, bounce handling, reputation |
-
-### AI & Machine Learning
-
-| Skill | Description |
-|---|---|
-| [a2a-protocol](skills/a2a-protocol/) | Agent-to-Agent protocol - interoperability, multi-agent communication, discovery |
-| [a2ui](skills/a2ui/) | Agent-to-User Interface - Google's protocol for agent-driven declarative UIs |
-| [mastra](skills/mastra/) | TypeScript AI framework - agents, workflows, tools, memory, RAG, MCP |
-| [prompt-engineering](skills/prompt-engineering/) | LLM prompting techniques, chain-of-thought, few-shot, RAG patterns |
-| [llm-app-development](skills/llm-app-development/) | Building production LLM apps, guardrails, evaluation, fine-tuning |
-| [ml-ops](skills/ml-ops/) | Model deployment, monitoring, A/B testing, feature stores |
-| [computer-vision](skills/computer-vision/) | Image classification, object detection, segmentation pipelines |
-| [nlp-engineering](skills/nlp-engineering/) | Text processing, embeddings, search, classification, summarization |
-| [data-science](skills/data-science/) | EDA, statistical analysis, visualization, hypothesis testing |
-| [ai-agent-design](skills/ai-agent-design/) | Multi-agent systems, tool use, planning, memory architectures |
-
-### UI/UX & Design
-
-| Skill | Description |
-|---|---|
-| [absolute-ui](skills/absolute-ui/) | Build polished, modern UIs - spacing, color, typography, components, accessibility, animations, design systems |
-| [accessibility-wcag](skills/accessibility-wcag/) | ARIA, screen readers, keyboard navigation, WCAG compliance |
-| [figma-to-code](skills/figma-to-code/) | Translating Figma designs to pixel-perfect implementations |
-| [ux-research](skills/ux-research/) | User interviews, usability testing, journey mapping, A/B test design |
-
-### Developer Tools
-
-| Skill | Description |
-|---|---|
-| [cmux](skills/cmux/) | Terminal multiplexer CLI - panes, surfaces, workspaces, browser automation |
-| [vite-plus](skills/vite-plus/) | Vite+ unified toolchain - scaffolding, migration, dev/build/test/lint, monorepo tasks |
-| [second-brain](skills/second-brain/) | Persistent second brain for AI agents - tag-indexed, hierarchical knowledge |
-| [git-advanced](skills/git-advanced/) | Rebase strategies, bisect, worktrees, hooks, monorepo workflows |
-| [vim-neovim](skills/vim-neovim/) | Configuration, keybindings, plugins, Lua scripting |
-| [regex-mastery](skills/regex-mastery/) | Pattern writing, lookaheads, named groups, performance, common recipes |
-| [shell-scripting](skills/shell-scripting/) | Bash/Zsh scripting, argument parsing, error handling, portability |
-| [debugging-tools](skills/debugging-tools/) | Chrome DevTools, lldb, strace, network debugging, memory profilers |
-| [cli-design](skills/cli-design/) | Argument parsing, help text, interactive prompts, config files, distribution |
-| [open-source-management](skills/open-source-management/) | OSS project maintenance - governance, changelogs, community, licensing |
-| [meta-repo](skills/meta-repo/) | Multi-repository management with `meta` - coordinating git/shell commands across many repos, polyrepo orchestration |
-| [x-twitter-scraper](skills/x-twitter-scraper/) | Xquik API workflows for tweet search, user lookup, follower extraction, webhooks, MCP, SDKs, and gated X account actions |
-
-### Testing & QA
-
-| Skill | Description |
-|---|---|
-| [test-strategy](skills/test-strategy/) | Unit, integration, e2e, contract testing - when to use what |
-| [cypress-testing](skills/cypress-testing/) | E2E testing, component testing, custom commands, CI integration |
-| [playwright-testing](skills/playwright-testing/) | Browser automation, visual regression, API testing |
-| [jest-vitest](skills/jest-vitest/) | Unit testing patterns, mocking, snapshot testing, coverage |
-| [load-testing](skills/load-testing/) | k6, Artillery, JMeter, performance benchmarks, capacity planning |
-| [api-testing](skills/api-testing/) | REST/GraphQL testing, contract testing, mock servers |
-| [chaos-engineering](skills/chaos-engineering/) | Fault injection, resilience testing, game days, failure modes |
-
-### Security
-
-| Skill | Description |
-|---|---|
-| [skill-audit](skills/skill-audit/) | AI-powered security audit for agent skills - prompt injection, exfiltration, supply chain, behavioral safety |
-| [appsec-owasp](skills/appsec-owasp/) | OWASP Top 10, secure coding, input validation, auth patterns |
-| [penetration-testing](skills/penetration-testing/) | Ethical hacking, vulnerability assessment, exploit development |
-| [cloud-security](skills/cloud-security/) | IAM, secrets management, network policies, compliance |
-| [cryptography](skills/cryptography/) | Encryption, hashing, TLS, JWT, key management, zero-trust |
-| [security-incident-response](skills/security-incident-response/) | Forensics, containment, root cause analysis, post-mortems |
-
-### SEO & Search Visibility
-
-| Skill | Description |
-|---|---|
-| [absolute-seo](skills/absolute-seo/) | Comprehensive SEO - technical, on-page, E-E-A-T, schema, CWV, local, link building, international, e-commerce, programmatic, GEO/AEO, audits |
-| [keyword-research](skills/keyword-research/) | Tri-surface keyword research - organic, AEO (snippets/PAA), GEO (AI citations) scoring |
-
-### Marketing
-
-| Skill | Description |
-|---|---|
-| [absolute-marketing](skills/absolute-marketing/) | Unified marketing - copy, content, SEO, email, social, paid ads, CRO, brand, growth, pricing, launches |
-| [content-marketing](skills/content-marketing/) | Blog strategy, SEO content, content calendars, repurposing |
-| [email-marketing](skills/email-marketing/) | Campaigns, drip sequences, deliverability, A/B testing |
-| [social-media-strategy](skills/social-media-strategy/) | Platform-specific tactics, scheduling, analytics, engagement |
-| [growth-hacking](skills/growth-hacking/) | Viral loops, referral programs, activation funnels, retention |
-| [copywriting](skills/copywriting/) | Headlines, landing pages, CTAs, persuasion frameworks (AIDA, PAS) |
-| [brand-strategy](skills/brand-strategy/) | Positioning, voice and tone, brand architecture, storytelling |
-| [developer-advocacy](skills/developer-advocacy/) | Talks, demos, blog posts, SDK examples, community engagement |
-| [video-production](skills/video-production/) | Script writing, editing workflows, thumbnails, YouTube SEO |
-
-### Sales
-
-| Skill | Description |
-|---|---|
-| [sales-playbook](skills/sales-playbook/) | Outbound sequences, objection handling, discovery calls, MEDDIC |
-| [crm-management](skills/crm-management/) | Salesforce/HubSpot workflows, pipeline management, forecasting |
-| [sales-enablement](skills/sales-enablement/) | Battle cards, competitive intel, case studies, ROI calculators |
-| [proposal-writing](skills/proposal-writing/) | RFP responses, SOWs, pricing strategies, win themes |
-| [account-management](skills/account-management/) | Expansion playbooks, QBRs, stakeholder mapping, renewal strategy |
-| [lead-scoring](skills/lead-scoring/) | ICP definition, scoring models, intent signals, qualification frameworks |
-
-### HR & People Operations
-
-| Skill | Description |
-|---|---|
-| [recruiting-ops](skills/recruiting-ops/) | Job descriptions, sourcing, screening, interview frameworks |
-| [interview-design](skills/interview-design/) | Structured interviews, rubrics, coding challenges, assessment |
-| [onboarding](skills/onboarding/) | 30/60/90 plans, buddy systems, knowledge transfer, ramp metrics |
-| [performance-management](skills/performance-management/) | OKRs, reviews, calibration, PIPs, career ladders |
-| [compensation-strategy](skills/compensation-strategy/) | Market benchmarking, equity, leveling, total rewards |
-| [employee-engagement](skills/employee-engagement/) | Surveys, pulse checks, retention strategies, culture building |
-
-### Finance & Accounting
-
-| Skill | Description |
-|---|---|
-| [financial-modeling](skills/financial-modeling/) | DCF, LBO, revenue forecasting, scenario analysis, cap tables |
-| [budgeting-planning](skills/budgeting-planning/) | FP&A, variance analysis, rolling forecasts, cost allocation |
-| [startup-fundraising](skills/startup-fundraising/) | Pitch decks, term sheets, due diligence, investor relations |
-| [tax-strategy](skills/tax-strategy/) | Corporate tax, R&D credits, transfer pricing, compliance |
-| [bookkeeping-automation](skills/bookkeeping-automation/) | Chart of accounts, reconciliation, AP/AR, month-end close |
-| [financial-reporting](skills/financial-reporting/) | P&L, balance sheet, cash flow, board decks, KPI dashboards |
-
-### Legal & Compliance
-
-| Skill | Description |
-|---|---|
-| [contract-drafting](skills/contract-drafting/) | NDAs, MSAs, SaaS agreements, licensing, redlining |
-| [privacy-compliance](skills/privacy-compliance/) | GDPR, CCPA, data processing, consent management, DPIAs |
-| [ip-management](skills/ip-management/) | Patents, trademarks, trade secrets, open-source licensing |
-| [employment-law](skills/employment-law/) | Offer letters, termination, contractor vs employee, workplace policies |
-| [regulatory-compliance](skills/regulatory-compliance/) | SOC 2, HIPAA, PCI-DSS, audit preparation, controls |
-
-### Product Management
-
-| Skill | Description |
-|---|---|
-| [product-strategy](skills/product-strategy/) | Vision, roadmapping, prioritization frameworks (RICE, ICE, MoSCoW) |
-| [user-stories](skills/user-stories/) | Acceptance criteria, story mapping, backlog grooming, estimation |
-| [product-analytics](skills/product-analytics/) | Funnels, cohort analysis, feature adoption, metrics (NSM, AARRR) |
-| [posthog](skills/posthog/) | PostHog integration - product analytics, feature flags, A/B testing, session replay, surveys |
-| [competitive-analysis](skills/competitive-analysis/) | Market landscape, feature comparison, positioning, SWOT |
-| [product-launch](skills/product-launch/) | Go-to-market, beta programs, launch checklists, rollout strategy |
-| [product-discovery](skills/product-discovery/) | Jobs-to-be-done, opportunity solution trees, assumption mapping |
-
-### Support & Customer Success
-
-| Skill | Description |
-|---|---|
-| [customer-support-ops](skills/customer-support-ops/) | Ticket triage, SLA management, macros, escalation workflows |
-| [knowledge-base](skills/knowledge-base/) | Help center architecture, article writing, search optimization |
-| [customer-success-playbook](skills/customer-success-playbook/) | Health scores, churn prediction, expansion signals, QBRs |
-| [community-management](skills/community-management/) | Forum moderation, engagement programs, advocacy, feedback loops |
-| [support-analytics](skills/support-analytics/) | CSAT, NPS, resolution time, deflection rate, trend analysis |
-
-### Business Strategy
-
-| Skill | Description |
-|---|---|
-| [api-monetization](skills/api-monetization/) | Usage-based pricing, rate limiting, developer tiers, Stripe metering |
-| [saas-metrics](skills/saas-metrics/) | MRR, churn, LTV, CAC, cohort analysis, board reporting |
-| [pricing-strategy](skills/pricing-strategy/) | Packaging, freemium, usage-based, enterprise tiers, price testing |
-| [partnership-strategy](skills/partnership-strategy/) | Co-marketing, integrations, channel partnerships, affiliates |
-
-### Monitoring
-
-| Skill | Description |
-|---|---|
-| [supaguard](skills/supaguard/) | Synthetic monitoring from source code - Playwright script generation, multi-region checks, alerting |
-
-### Operations & Automation
-
-| Skill | Description |
-|---|---|
-| [incident-management](skills/incident-management/) | On-call rotations, runbooks, post-mortems, status pages, war rooms |
-| [no-code-automation](skills/no-code-automation/) | Zapier, Make, n8n, workflow automation, internal tooling |
-
-### Data Engineering
-
-| Skill | Description |
-|---|---|
-| [data-pipelines](skills/data-pipelines/) | ETL/ELT, Airflow, dbt, Spark, streaming vs batch |
-| [data-warehousing](skills/data-warehousing/) | Star schema, slowly changing dimensions, Snowflake, BigQuery |
-| [data-quality](skills/data-quality/) | Validation, monitoring, lineage, Great Expectations, contracts |
-| [analytics-engineering](skills/analytics-engineering/) | dbt models, semantic layers, metrics definitions, self-serve analytics |
-| [real-time-streaming](skills/real-time-streaming/) | Kafka, Flink, event sourcing, CDC, stream processing patterns |
-
-### Mobile Development
-
-| Skill | Description |
-|---|---|
-| [react-native](skills/react-native/) | Expo, navigation, native modules, performance, OTA updates |
-| [ios-swift](skills/ios-swift/) | SwiftUI, UIKit, Core Data, App Store guidelines, performance |
-| [android-kotlin](skills/android-kotlin/) | Jetpack Compose, Room, coroutines, Play Store, architecture |
-| [mobile-testing](skills/mobile-testing/) | Detox, Appium, device farms, crash reporting, beta distribution |
-
-### Game Development
-
-| Skill | Description |
-|---|---|
-| [unity-development](skills/unity-development/) | C# scripting, ECS, physics, shaders, UI toolkit |
-| [game-design-patterns](skills/game-design-patterns/) | State machines, object pooling, event systems, command pattern |
-| [pixel-art-sprites](skills/pixel-art-sprites/) | Sprite creation, animation, tilesets, palette management |
-| [game-audio](skills/game-audio/) | Sound design, adaptive music, spatial audio, FMOD/Wwise |
-| [game-balancing](skills/game-balancing/) | Economy design, difficulty curves, progression systems, playtesting |
-
-### Technical Writing
-
-| Skill | Description |
-|---|---|
-| [codedocs](skills/codedocs/) | AI-agent-friendly codebase docs - generate layered docs, answer questions docs-first, update incrementally via git diff |
-| [technical-writing](skills/technical-writing/) | API docs, tutorials, architecture docs, ADRs, runbooks |
-| [developer-experience](skills/developer-experience/) | SDK design, onboarding, changelog, migration guides |
-| [internal-docs](skills/internal-docs/) | RFCs, design docs, post-mortems, runbooks, knowledge management |
-
-### Project Management
-
-| Skill | Description |
-|---|---|
-| [agile-scrum](skills/agile-scrum/) | Sprint planning, retrospectives, velocity, Kanban, estimation |
-| [project-execution](skills/project-execution/) | Risk management, dependency tracking, stakeholder communication |
-| [remote-collaboration](skills/remote-collaboration/) | Async workflows, documentation-driven, meeting facilitation |
-
-### Blockchain & Web3
-
-| Skill | Description |
-|---|---|
-| [web3-smart-contracts](skills/web3-smart-contracts/) | Solidity, auditing, DeFi patterns, gas optimization, security |
-
-### Cross-Functional
-
-| Skill | Description |
-|---|---|
-| [technical-interviewing](skills/technical-interviewing/) | Coding challenges, system design interviews, rubric calibration |
-| [customer-research](skills/customer-research/) | Surveys, interviews, NPS, behavioral analytics, persona building |
-| [presentation-design](skills/presentation-design/) | Slide structure, storytelling frameworks, data visualization |
-| [spreadsheet-modeling](skills/spreadsheet-modeling/) | Formulas, pivot tables, dashboards, macros, financial models |
-
-### Video Creation
-
-| Skill | Description |
-|---|---|
-| [video-creator](skills/video-creator/) | End-to-end video orchestrator - 7-step workflow from interview to 4K render |
-| [remotion-video](skills/remotion-video/) | Core Remotion framework - compositions, animations, rendering, project setup |
-| [video-scriptwriting](skills/video-scriptwriting/) | Interactive script writing - interview framework, YAML scene format, pacing |
-| [video-audio-design](skills/video-audio-design/) | Audio design - ElevenLabs TTS, background music, SFX generation, mixing |
-| [video-analyzer](skills/video-analyzer/) | FFmpeg + AI vision analysis - frame extraction, scene detection, design system extraction |
-
-### Full Registry
-
-**155+ skills** across 25 categories.
-
-## Creating Skills
-
-Use the `skill-forge` skill to generate new skills:
-
-```
-/skill-forge <url-or-topic>
-```
-
-- **URL input** - provide a GitHub repo or docs URL and skill-forge crawls it
-- **Domain topic** - provide a topic like "marketing" or "typescript" and skill-forge runs a brainstorm session to scope and build the skill
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide on creating and submitting skills.
-
-## Contributing
-
-We welcome contributions! Whether it's a new skill for a framework you love or fixing a typo in an existing one, check out the [contributing guide](CONTRIBUTING.md).
-
-## Star History
-
-<a href="https://www.star-history.com/?repos=AbsolutelySkilled%2FAbsolutelySkilled&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=AbsolutelySkilled/AbsolutelySkilled&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=AbsolutelySkilled/AbsolutelySkilled&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=AbsolutelySkilled/AbsolutelySkilled&type=date&legend=top-left" />
- </picture>
-</a>
+1. **Think & Plan & Build** → `absolute-work` takes the work from idea to verified code
+2. **Design the UI** → `absolute-ui` makes the interface look intentional, not generated
+3. **Polish** → `absolute-simplify` cleans up the diff before you commit
 
 ## License
 

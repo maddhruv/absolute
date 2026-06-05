@@ -1,0 +1,155 @@
+{
+  "skill": "absolute-work",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "trigger-build-e2e",
+      "description": "Should trigger Absolute Work when the user asks to build a feature end-to-end",
+      "prompt": "Build a user authentication system end-to-end for my Next.js app using absolute-work",
+      "type": "explanation",
+      "assertions": [
+        { "type": "contains", "value": "INTAKE" },
+        { "type": "contains", "value": "gate" }
+      ]
+    },
+    {
+      "id": "trigger-pick-up-ticket",
+      "description": "Should trigger Absolute Work when the user asks to pick up a ticket",
+      "prompt": "Pick up this ticket and take it to done: add a commenting system to blog posts",
+      "type": "explanation",
+      "assertions": [
+        { "type": "contains", "value": "board" },
+        { "type": "contains", "value": "design" }
+      ]
+    },
+    {
+      "id": "trigger-grill-me",
+      "description": "Should trigger the relentless design interview when the user wants to be grilled",
+      "prompt": "Grill me on my plan to add real-time notifications before we build anything.",
+      "type": "explanation",
+      "assertions": [
+        { "type": "contains", "value": "one question at a time" },
+        { "type": "contains", "value": "codebase" }
+      ]
+    },
+    {
+      "id": "anti-trigger-simple-fix",
+      "description": "Should NOT trigger the full lifecycle for a trivial single-file fix",
+      "prompt": "Fix the typo on line 5 of src/utils/helpers.ts - change 'recieve' to 'receive'",
+      "type": "explanation",
+      "assertions": [
+        { "type": "not_contains", "value": "INTAKE" },
+        { "type": "not_contains", "value": ".absolute-work" }
+      ]
+    },
+    {
+      "id": "core-adaptive-intake-type",
+      "description": "Should detect the work type and adapt the question bank, with codebase-first questioning",
+      "prompt": "Using absolute-work, I want to add real-time notifications to my app. Start the intake.",
+      "type": "explanation",
+      "assertions": [
+        { "type": "contains", "value": "type" },
+        { "type": "contains", "value": "codebase" },
+        { "type": "contains", "value": "problem" }
+      ]
+    },
+    {
+      "id": "core-safe-wave-dag",
+      "description": "Should produce a dependency DAG and classify tasks as sequential blockers vs parallel-safe",
+      "prompt": "Using absolute-work, decompose this: Add a REST API with user CRUD, auth middleware, and integration tests. The auth middleware depends on the user model, and tests depend on both the API and middleware. Show the wave plan.",
+      "type": "explanation",
+      "assertions": [
+        { "type": "contains", "value": "AW-" },
+        { "type": "contains", "value": "Wave" },
+        { "type": "contains", "value": "depend" },
+        { "type": "contains", "value": "parallel" }
+      ]
+    },
+    {
+      "id": "core-board-format",
+      "description": "Should produce a valid local board.md with correct structure",
+      "prompt": "Using absolute-work, show me what the .absolute-work/board.md file looks like after the decompose phase for adding a payment system.",
+      "type": "explanation",
+      "assertions": [
+        { "type": "contains", "value": ".absolute-work/board.md" },
+        { "type": "contains", "value": "Intake Summary" },
+        { "type": "contains", "value": "Task Graph" },
+        { "type": "contains", "value": "status" }
+      ]
+    },
+    {
+      "id": "core-tdd-execute",
+      "description": "Should execute tasks test-first with red-green-refactor",
+      "prompt": "Using absolute-work, plan the execution for task AW-003: Create user authentication middleware. Show the TDD approach.",
+      "type": "explanation",
+      "assertions": [
+        { "type": "contains", "value": "test" },
+        { "type": "contains", "value": "red" },
+        { "type": "contains", "value": "green" }
+      ]
+    },
+    {
+      "id": "core-migration-handling",
+      "description": "Should apply first-class migration handling with a call-site inventory before changing code",
+      "prompt": "Using absolute-work, I need to migrate our codebase from moment.js to date-fns. How do you approach it?",
+      "type": "explanation",
+      "assertions": [
+        { "type": "contains", "value": "call-site" },
+        { "type": "contains", "value": "incremental" },
+        { "type": "contains", "value": "rollback" }
+      ]
+    },
+    {
+      "id": "gotcha-phase-gate-stop",
+      "description": "Should stop and wait for explicit approval between phases rather than chaining them",
+      "prompt": "Using absolute-work, brainstorm, spec, decompose, and build a user dashboard all in one go without stopping.",
+      "type": "explanation",
+      "assertions": [
+        { "type": "contains", "value": "gate" },
+        { "type": "contains", "value": "approv" }
+      ]
+    },
+    {
+      "id": "gotcha-safety-first-parallel",
+      "description": "Should serialize blockers and shared-file tasks rather than parallelizing everything",
+      "prompt": "Using absolute-work, can all my tasks in a wave run in parallel to go faster?",
+      "type": "explanation",
+      "assertions": [
+        { "type": "contains", "value": "sequential" },
+        { "type": "contains", "value": "independent" },
+        { "type": "contains", "value": "shared" }
+      ]
+    },
+    {
+      "id": "gotcha-resume-board",
+      "description": "Should detect and resume an existing board rather than starting fresh",
+      "prompt": "Using absolute-work, there's already a .absolute-work/board.md in my repo from yesterday. What happens when I invoke the skill?",
+      "type": "explanation",
+      "assertions": [
+        { "type": "contains", "value": "resume" },
+        { "type": "contains", "value": "without explicit" }
+      ]
+    },
+    {
+      "id": "anti-hallucination-no-external-tracker-or-commit",
+      "description": "Should not claim external tracker integration and should never auto-commit",
+      "prompt": "Using absolute-work, does it pull tickets from JIRA automatically and commit the work for me when done?",
+      "type": "explanation",
+      "assertions": [
+        { "type": "contains", "value": "local" },
+        { "type": "not_contains", "value": "auto-commit" }
+      ]
+    },
+    {
+      "id": "reference-load-execution-model",
+      "description": "Should reference the execution-model.md file when asked about the safe-wave algorithm in detail",
+      "prompt": "Using absolute-work, explain the full safe-wave execution algorithm in detail.",
+      "type": "explanation",
+      "assertions": [
+        { "type": "contains", "value": "execution-model.md" },
+        { "type": "contains", "value": "sequential" },
+        { "type": "contains", "value": "parallel" }
+      ]
+    }
+  ]
+}
