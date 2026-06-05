@@ -252,8 +252,9 @@ After all simplifications are applied, attempt to verify nothing broke.
 - `go.mod` exists -> `go vet ./...`
 
 **Run and interpret:**
-- Set a **60-second timeout** on test/lint commands. If they time out, report
-  "Tests timed out - manual verification recommended" and do not revert.
+- Set a **reasonable timeout** on test/lint commands so a slow suite never hangs
+  the session. If they time out, report "Tests timed out - manual verification
+  recommended" and do not revert.
 - If tests pass, report it.
 - If tests fail, analyze which test(s) broke:
   - If clearly caused by a simplification: revert that specific change, re-run
@@ -354,8 +355,8 @@ code theory in the summary -- just state what changed and why in plain language.
    break tests or reduce coverage. Apply extra conservatism to test files.
 
 4. **Auto-verify can time out on slow test suites.** Large projects have test
-   suites that take minutes. The 60-second timeout prevents hanging. Report the
-   timeout and let the user run tests manually.
+   suites that take minutes. A timeout prevents hanging. Report the timeout and
+   let the user run tests manually.
 
 5. **Multi-language repos overload context.** A monorepo with JS, Python, and Go
    files in scope loads 4 reference files (3 language + 1 universal). If one
@@ -382,7 +383,7 @@ code theory in the summary -- just state what changed and why in plain language.
 | Making 10 separate edits to one file | Batch all changes to a file in one pass |
 | Skipping re-read after edit | Always re-read the file to verify syntactic coherence |
 | Not re-staging files that were staged | After editing staged files, run `git add` to preserve staging state |
-| Running tests without a timeout | Cap test runs at 60 seconds. Report timeout, don't hang |
+| Running tests without a timeout | Cap test runs with a timeout. Report timeout, don't hang |
 | Presenting analysis and asking for permission | This is an autonomous skill. Analyze, apply, verify, report |
 
 ---
