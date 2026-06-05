@@ -37,7 +37,7 @@ It relentlessly interviews you to a shared design (one question at a time, codeb
 3. **Decompose & Plan** — atomic tasks, a dependency graph, and safe-wave assignment on `.absolute-work/board.md`
 4. **Execute** — onion-peel one wave at a time, TDD per task (red → green → refactor)
 5. **Verify** — binary signals (test/lint/typecheck/build) then an independent scored evaluator
-6. **Converge** — full suite, summary, close the board, suggest a commit (never auto-commit)
+6. **Converge** — full suite, summary, manual test steps to exercise the new functionality, close the board, suggest a commit (never auto-commit)
 
 ### What makes this skill different
 

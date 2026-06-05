@@ -141,6 +141,17 @@
       ]
     },
     {
+      "id": "core-converge-test-steps",
+      "description": "Should end the converge phase with concrete manual steps for the user to test the added functionality",
+      "prompt": "Using absolute-work, I just finished building the payment feature with you. We're in converge. What do you give me to close out?",
+      "type": "explanation",
+      "assertions": [
+        { "type": "contains", "value": "test" },
+        { "type": "contains", "value": "step" },
+        { "type": "contains", "value": "expected" }
+      ]
+    },
+    {
       "id": "reference-load-execution-model",
       "description": "Should reference the execution-model.md file when asked about the safe-wave algorithm in detail",
       "prompt": "Using absolute-work, explain the full safe-wave execution algorithm in detail.",
