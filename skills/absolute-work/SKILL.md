@@ -19,7 +19,7 @@ tags:
   - tdd
   - migration
   - workflow
-recommended_skills: [absolute-simplify, absolute-ui]
+recommended_skills: [absolute-simplify, absolute-ui, absolute-documentations]
 platforms:
   - claude-code
   - gemini-cli

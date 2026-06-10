@@ -13,7 +13,7 @@ description: >
   Language-agnostic at base with deep opinions for JS/TS/React, Python, and Go.
 category: workflow
 tags: [simplification, refactoring, clean-code, autonomous, code-quality, clarity]
-recommended_skills: [absolute-work, absolute-ui]
+recommended_skills: [absolute-work, absolute-ui, absolute-documentations]
 platforms:
   - claude-code
   - gemini-cli

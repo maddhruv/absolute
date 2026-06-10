@@ -86,6 +86,7 @@ Pair absolute-work with these complementary skills:
 
 - [absolute-simplify](https://www.absolutelyskilled.pro/skill/absolute-simplify)
 - [absolute-ui](https://www.absolutelyskilled.pro/skill/absolute-ui)
+- [absolute-documentations](https://www.absolutelyskilled.pro/skill/absolute-documentations)
 
 ## Frequently Asked Questions
 

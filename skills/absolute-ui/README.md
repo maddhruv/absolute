@@ -109,6 +109,7 @@ Pair absolute-ui with these complementary skills:
 
 - [absolute-work](https://www.absolutelyskilled.pro/skill/absolute-work)
 - [absolute-simplify](https://www.absolutelyskilled.pro/skill/absolute-simplify)
+- [absolute-documentations](https://www.absolutelyskilled.pro/skill/absolute-documentations)
 
 ## Frequently Asked Questions
 

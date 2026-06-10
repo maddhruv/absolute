@@ -1,6 +1,6 @@
 # AbsolutelySkilled
 
-A focused toolkit of production-ready skills for AI coding agents: absolute-work, absolute-ui, and absolute-simplify.
+A focused toolkit of production-ready skills for AI coding agents: absolute-work, absolute-ui, absolute-simplify, and absolute-documentations.
 
 ## Project Structure
 
@@ -42,7 +42,7 @@ Write 10-15 evals covering:
 
 ## Maintaining Skills
 
-This is a focused 3-skill toolkit (absolute-work, absolute-ui, absolute-simplify) — not an open registry. When editing a skill, keep its `SKILL.md`, `README.md`, and `evals.json` in sync and re-run the website build to verify.
+This is a focused 4-skill toolkit (absolute-work, absolute-ui, absolute-simplify, absolute-documentations) — not an open registry. When editing a skill, keep its `SKILL.md`, `README.md`, and `evals.json` in sync and re-run the website build to verify.
 
 ## Package Manager
 

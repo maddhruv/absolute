@@ -1,0 +1,78 @@
+# Framework + stack documentation sources used to build this skill.
+
+skill: absolute-documentations
+crawled: 2026-06-10
+sources:
+  - url: https://diataxis.fr/
+    type: guide
+    description: The Diátaxis framework - the four documentation quadrants, their purposes, and anti-patterns
+    accessed: 2026-06-10
+    sections_used:
+      - Tutorials
+      - How-to guides
+      - Reference
+      - Explanation
+      - The compass
+
+  - url: https://keepachangelog.com/en/1.1.0/
+    type: guide
+    description: Keep a Changelog format for CHANGELOG files
+    accessed: 2026-06-10
+    sections_used:
+      - Format and section types
+
+  - url: https://matklad.github.io/2021/02/06/ARCHITECTURE.md.html
+    type: guide
+    description: ARCHITECTURE.md pattern - codemap, invariants, architecture-altitude rule
+    accessed: 2026-06-10
+    sections_used:
+      - Codemap
+      - Cross-cutting concerns
+
+  - url: https://fumadocs.dev/docs/ui
+    type: api-reference
+    description: Fumadocs UI component vocabulary and MDX conventions
+    accessed: 2026-06-10
+    sections_used:
+      - Callout, Cards, Steps, Tabs, TypeTable, Files
+
+  - url: https://docusaurus.io/docs/markdown-features
+    type: api-reference
+    description: Docusaurus admonitions, tabs, and code block features
+    accessed: 2026-06-10
+    sections_used:
+      - Admonitions
+      - Tabs
+      - Code blocks
+
+  - url: https://starlight.astro.build/components/using-components/
+    type: api-reference
+    description: Starlight component set and aside syntax
+    accessed: 2026-06-10
+    sections_used:
+      - Asides
+      - Steps, Tabs, FileTree
+
+  - url: https://squidfunk.github.io/mkdocs-material/reference/
+    type: api-reference
+    description: MkDocs Material admonitions, content tabs, and code annotation syntax
+    accessed: 2026-06-10
+    sections_used:
+      - Admonitions
+      - Content tabs
+
+  - url: https://vitepress.dev/guide/markdown
+    type: api-reference
+    description: VitePress containers, code groups, and code directives
+    accessed: 2026-06-10
+    sections_used:
+      - Custom containers
+      - Code groups
+
+  - url: https://mintlify.com/docs/components
+    type: api-reference
+    description: Mintlify built-in MDX components for docs and API reference
+    accessed: 2026-06-10
+    sections_used:
+      - Callouts, Steps, Tabs
+      - ParamField, ResponseField

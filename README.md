@@ -18,7 +18,7 @@
 
 ## What is this?
 
-AbsolutelySkilled is a focused toolkit that turns an AI coding agent into an autonomous development partner. Instead of a sprawling registry, it ships **three opinionated skills** that cover the loop you actually run every day: **think → plan → build → polish**.
+AbsolutelySkilled is a focused toolkit that turns an AI coding agent into an autonomous development partner. Instead of a sprawling registry, it ships **four opinionated skills** that cover the loop you actually run every day: **think → plan → build → polish → document**.
 
 Skills work with any agent that supports the SKILL.md format: Claude Code, Gemini CLI, OpenAI Codex, Cursor, and [40+ more agents](#supported-agents).
 
@@ -27,6 +27,7 @@ Skills work with any agent that supports the SKILL.md format: Claude Code, Gemin
 | [absolute-work](skills/absolute-work/) | End-to-end, phase-gated SDLC — brainstorm → spec → task board → safe-wave execution → verify |
 | [absolute-ui](skills/absolute-ui/) | Build polished, modern UIs — spacing, color, typography, components, accessibility, animations |
 | [absolute-simplify](skills/absolute-simplify/) | Autonomously simplify your working changes — reduce complexity, remove redundancy, keep tests green |
+| [absolute-documentations](skills/absolute-documentations/) | Write, improve, and audit docs with Diátaxis — tutorials, how-tos, reference, explanation, READMEs, ADRs |
 
 ---
 
@@ -97,6 +98,24 @@ npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-simplify
 ```bash
 /absolute-simplify
 /absolute-simplify "clean up my changes in src/api/"
+```
+
+### Absolute Documentations — Diátaxis-Driven Documentation
+
+Writes, improves, and audits documentation using the Diátaxis framework — one quadrant per page (tutorial, how-to, reference, explanation), plus repo developer docs like READMEs, CONTRIBUTING guides, ADRs, changelogs, and runbooks. It detects your docs stack (Fumadocs, Docusaurus, Starlight, MkDocs, VitePress, Mintlify, or plain Markdown), writes in your project's own voice, gates on an outline before writing prose, and verifies every snippet, flag, and default against your actual code.
+
+**Install:**
+
+```bash
+npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-documentations
+```
+
+**Usage:**
+
+```bash
+/absolute-documentations "Write a getting-started tutorial for the CLI"
+/absolute-documentations "Improve this README, it's 800 lines of everything"
+/absolute-documentations "Audit our docs site and propose a restructure"
 ```
 
 ---
@@ -190,11 +209,12 @@ website/               # Astro + Tailwind site, reads skills/*/README.md
 
 ## Recommended Workflow
 
-The three skills are designed to chain into one loop:
+The four skills are designed to chain into one loop:
 
 1. **Think & Plan & Build** → `absolute-work` takes the work from idea to verified code
 2. **Design the UI** → `absolute-ui` makes the interface look intentional, not generated
 3. **Polish** → `absolute-simplify` cleans up the diff before you commit
+4. **Document** → `absolute-documentations` writes the docs for what you shipped
 
 ## License
 

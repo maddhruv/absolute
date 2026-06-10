@@ -39,6 +39,7 @@ Pair absolute-simplify with these complementary skills:
 
 - [absolute-work](https://www.absolutelyskilled.pro/skill/absolute-work)
 - [absolute-ui](https://www.absolutelyskilled.pro/skill/absolute-ui)
+- [absolute-documentations](https://www.absolutelyskilled.pro/skill/absolute-documentations)
 
 ## Frequently Asked Questions
 
