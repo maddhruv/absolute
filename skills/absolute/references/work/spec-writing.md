@@ -1,4 +1,4 @@
-<!-- Part of the `absolute` skill (work command). Load this file during Phase 2 (SPEC) when writing or reviewing the design spec document. -->
+<!-- Part of the `absolute` skill. Shared source of truth for the spec template, scaling rules, and scored review rubric — loaded by `work` during Phase 2 (SPEC) and by the standalone `spec` command. Keep it command-agnostic; edits here affect both. -->
 
 # Spec Writing
 
