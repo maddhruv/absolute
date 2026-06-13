@@ -1,10 +1,11 @@
 # Absolute
 
-**A development workflow engine for AI coding agents. One skill, ten commands — a build loop you run every day (`think → spec → plan → build → polish → document`) plus an engineering-health family that keeps the codebase maintained (deps, security, dead code, lint/type debt, flaky tests).**
+**A development workflow engine for AI coding agents. One skill, eleven commands — a one-time `init` (interview + stack detection → config), a build loop you run every day (`think → spec → plan → build → polish → document`), plus an engineering-health family that keeps the codebase maintained (deps, security, dead code, lint/type debt, flaky tests).**
 
-> **Quick start:** `npx skills add maddhruv/absolute`, then run `/absolute work` (or `spec`, `ui`, `simplify`, `docs`, `upgrade`, `audit`, `prune`, `debt`, `deflake`) inside your AI coding tool.
+> **Quick start:** `npx skills add maddhruv/absolute`, then run `/absolute init` once (or jump straight to `work`, `spec`, `ui`, `simplify`, `docs`, `upgrade`, `audit`, `prune`, `debt`, `deflake`) inside your AI coding tool.
 
 ```bash
+/absolute init                                              # interview + detect stack → write config the commands read
 /absolute work "Add OAuth2 login with Google and GitHub"   # plan it, build it, verify it
 /absolute spec "Design a commenting system"                  # write a reviewed design doc, don't build yet
 /absolute ui "Design a pricing page"                         # make it look intentional, not generated
@@ -37,7 +38,13 @@ One install. One update. One command surface (`/absolute …`) your agent and yo
 
 ## What's Included
 
-A single skill, `absolute`, that dispatches ten commands through a thin router. It works with any agent that supports the SKILL.md format: Claude Code, Gemini CLI, OpenAI Codex, Cursor, and [40+ more agents](#supported-agents).
+A single skill, `absolute`, that dispatches eleven commands through a thin router. It works with any agent that supports the SKILL.md format: Claude Code, Gemini CLI, OpenAI Codex, Cursor, and [40+ more agents](#supported-agents).
+
+**Setup** — run once per repo:
+
+| Command | Phase | What it does |
+|---|---|---|
+| [`/absolute init`](skills/absolute/references/init.md) | Setup | Interview how you want absolute to behave (output style, autonomy/gating, TDD strictness, spec dir, families) + detect the stack once, then write `.absolute.config.json` (project, committed) and optionally `~/.absolute/config.json` (user defaults + per-project overrides). Every other command reads it instead of re-detecting; non-destructive, never commits. |
 
 **Build loop** — the everyday flow:
 
@@ -59,15 +66,16 @@ A single skill, `absolute`, that dispatches ten commands through a thin router. 
 | [`/absolute debt`](skills/absolute/references/debt.md) | Lint & typecheck debt paydown — clear pre-existing violations and suppressions one rule per wave, fixing causes not symptoms. |
 | [`/absolute deflake`](skills/absolute/references/deflake.md) | Flaky test fixes — detect nondeterminism empirically, diagnose the root cause, fix it (never retry/skip/sleep), verify across many randomized runs. |
 
-Behind the commands: **10 command flows + 1 shared health engine + 41 deep-dive guides** (typography, color theory, the safe-wave execution algorithm, language-specific simplification catalogs, per-stack docs conventions, and more), loaded only when the task needs them. The five health commands share `references/health-engine.md`; `spec` reuses `work`'s spec template.
+Behind the commands: **11 command flows + 1 shared health engine + 41 deep-dive guides** (typography, color theory, the safe-wave execution algorithm, language-specific simplification catalogs, per-stack docs conventions, and more), loaded only when the task needs them. The five health commands share `references/health-engine.md`; `spec` reuses `work`'s spec template.
 
 ---
 
 ## Usage
 
-Call a command directly:
+Set it up once, then call a command directly:
 
 ```bash
+/absolute init                                                 # one-time: interview + detect stack → config
 /absolute work "Pick up this ticket: migrate the REST API from v2 to v3"
 /absolute work "Grill me on my plan for a real-time chat feature, then build it"
 /absolute spec "Draft a design doc for our rate limiter, don't build it yet"
@@ -102,7 +110,7 @@ INTAKE & BRAINSTORM ─ gate ─ SPEC ─ gate ─ DECOMPOSE & PLAN ─ gate ─
 
 ## Installation
 
-Absolute installs with the [`skills`](https://github.com/vercel-labs/skills) CLI via `npx`. One command brings all ten commands:
+Absolute installs with the [`skills`](https://github.com/vercel-labs/skills) CLI via `npx`. One command brings all eleven commands:
 
 ```bash
 npx skills add maddhruv/absolute
@@ -148,6 +156,7 @@ skills/absolute/
   SKILL.md                 # The router: routing rules + command table
   README.md                # Skill landing page
   references/
+    init.md                                               # one-time setup: interview + detect → config
     work.md, spec.md, ui.md, simplify.md, docs.md         # build-loop command flows
     upgrade.md, audit.md, prune.md, debt.md, deflake.md   # engineering-health command flows
     health-engine.md                        # shared loop for the 5 health commands

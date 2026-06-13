@@ -1,6 +1,6 @@
 # Absolute
 
-A focused development workflow engine for AI coding agents: one skill, `absolute`, with ten commands — a build loop (`work`, `spec`, `ui`, `simplify`, `docs`) and an engineering-health family (`upgrade`, `audit`, `prune`, `debt`, `deflake`) — dispatched as `/absolute <command> [target]`.
+A focused development workflow engine for AI coding agents: one skill, `absolute`, with eleven commands — a one-time setup (`init`), a build loop (`work`, `spec`, `ui`, `simplify`, `docs`) and an engineering-health family (`upgrade`, `audit`, `prune`, `debt`, `deflake`) — dispatched as `/absolute <command> [target]`.
 
 ## Project Structure
 
@@ -9,6 +9,7 @@ skills/absolute/            # The single skill
   SKILL.md                  # Router: frontmatter + routing rules + command table (under 500 lines)
   README.md                 # Skill landing page (required)
   references/
+    init.md                                          # one-time setup: interview + detect → config
     work.md, spec.md, ui.md, simplify.md, docs.md   # build-loop command flows
     upgrade.md, audit.md, prune.md, debt.md, deflake.md   # engineering-health command flows
     health-engine.md          # shared loop for the 5 health commands (not a command)
@@ -33,7 +34,7 @@ CONTRIBUTING.md             # Full contribution guide
 
 ## Maintaining the Skill
 
-This is a focused single-skill toolkit — `absolute` with ten commands (build loop: `work`, `spec`, `ui`, `simplify`, `docs`; engineering health: `upgrade`, `audit`, `prune`, `debt`, `deflake`), not an open registry. The five health commands share `references/health-engine.md`. When editing a command, keep `SKILL.md` (router), `README.md`, and the command's `references/<command>.md` in sync.
+This is a focused single-skill toolkit — `absolute` with eleven commands (setup: `init`; build loop: `work`, `spec`, `ui`, `simplify`, `docs`; engineering health: `upgrade`, `audit`, `prune`, `debt`, `deflake`), not an open registry. The five health commands share `references/health-engine.md`. When editing a command, keep `SKILL.md` (router), `README.md`, and the command's `references/<command>.md` in sync.
 
 ## Package Manager
 

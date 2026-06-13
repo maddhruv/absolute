@@ -1,9 +1,14 @@
 ---
 name: absolute
-version: 0.4.0
+version: 0.5.0
 description: >
   A focused development workflow engine for AI coding agents, invoked as
-  `/absolute <command> [target]`. One skill, ten commands. Five cover the build loop
+  `/absolute <command> [target]`. One skill, eleven commands. One sets it up:
+  `init` (interview how you want absolute to behave + detect the stack once, then write
+  JSON config — `.absolute.config.json` per project and `~/.absolute/config.json` for
+  user defaults and per-project overrides — that every other command reads instead of
+  re-detecting; non-blocking, the others soft-recommend it).
+  Five cover the build loop
   you run every day — think → spec → plan → build → polish → document:
   `work` (end-to-end, phase-gated SDLC: relentless design interview → reviewed
   spec → dependency-graphed task board → safe-wave TDD execution → verification),
@@ -28,7 +33,8 @@ description: >
   suppressions by rule, no cheating the checker), and
   `deflake` (flaky test fixes — diagnose and fix the root nondeterminism, never
   retry/skip/sleep).
-  Triggers on "absolute work|spec|ui|simplify|docs|upgrade|audit|prune|debt|deflake",
+  Triggers on "absolute init|work|spec|ui|simplify|docs|upgrade|audit|prune|debt|deflake",
+  "set up absolute", "initialize absolute", "configure absolute",
   "build this end-to-end", "plan and build", "grill me on this", "write a spec",
   "draft a design doc", "design this UI", "make this less like AI slop",
   "simplify this", "clean up my changes", "write docs", "audit our docs",
@@ -39,6 +45,8 @@ category: workflow
 tags:
   - workflow
   - sdlc
+  - configuration
+  - init
   - planning
   - spec
   - specification
@@ -61,7 +69,7 @@ platforms:
   - openai-codex
   - mcp
 user-invocable: true
-argument-hint: "[work|spec|ui|simplify|docs|upgrade|audit|prune|debt|deflake] [target]"
+argument-hint: "[init|work|spec|ui|simplify|docs|upgrade|audit|prune|debt|deflake] [target]"
 license: MIT
 maintainers:
   - github: maddhruv
@@ -69,7 +77,10 @@ maintainers:
 
 # Absolute — Development Workflow Engine
 
-One skill, ten commands, dispatched as `/absolute <command> [target]`. Two families:
+One skill, eleven commands, dispatched as `/absolute <command> [target]`. One sets it up,
+the rest split into two families:
+
+**Setup** (run once per repo): `init` — interview + stack detection → JSON config the other commands read.
 
 **Build loop** (the everyday flow):
 **think → plan → build** (`work`) → **spec only** (`spec`) → **design** (`ui`) → **polish** (`simplify`) → **document** (`docs`)
@@ -88,6 +99,7 @@ five health commands share one loop in `references/health-engine.md` (loaded by 
 
 | Command | Phase | What it does | Reference |
 |---|---|---|---|
+| `init` | Setup | One-time setup: interview how you want absolute to behave (output style, autonomy/gating, TDD strictness, spec dir, families) + detect the stack once, then write `.absolute.config.json` (project, committed) and optionally `~/.absolute/config.json` (user defaults + per-project overrides). Every other command reads it instead of re-detecting; non-destructive, never commits. | [references/init.md](references/init.md) |
 | `work [target]` | Think · Plan · Build | End-to-end, phase-gated SDLC: relentless design interview → reviewed spec → dependency-graphed task board → safe-wave TDD execution → verification → converge. Handles features, bugs, refactors, greenfield, planning breakdowns, migrations. | [references/work.md](references/work.md) |
 | `spec [target]` | Plan | Lightweight standalone design spec — for when you want a doc to discuss or hand off, not build now. Codebase scan → bounded clarify pass (a few questions, not a grill) → write a reviewed spec to `docs/plans/` → independent scored review → stop. Reuses `work`'s spec template + rubric. | [references/spec.md](references/spec.md) |
 | `ui [target]` | Design | Build polished, intentional UIs with concrete CSS/Tailwind values: typography, color, layout, spacing, dark mode, accessibility, animations, components. The most comprehensive UI knowledge base, not vague advice. | [references/ui.md](references/ui.md) |
@@ -105,12 +117,14 @@ five health commands share one loop in `references/health-engine.md` (loaded by 
 
 Resolve the command on every invocation, then hand off to its reference.
 
-1. **First word matches a command** (`work`, `spec`, `ui`, `simplify`, `docs`,
+1. **First word matches a command** (`init`, `work`, `spec`, `ui`, `simplify`, `docs`,
    `upgrade`, `audit`, `prune`, `debt`, `deflake`) → read `references/<command>.md`
    and follow it exactly. Everything after the command name is the target/argument.
 
 2. **First word doesn't match, but the intent clearly maps to one command** → load
    that command's reference and proceed as if it was invoked explicitly:
+   - "set up / initialize / configure absolute", "first-time setup", "remember my
+     conventions/preferences for this repo" → **init**
    - "build X end-to-end", "plan and build", "break this into tasks", "grill me on
      this plan", "pick up this ticket", "run this migration" → **work**
    - "write a spec", "spec out this feature", "draft a design doc for X", "I want a
@@ -147,11 +161,28 @@ Resolve the command on every invocation, then hand off to its reference.
    on context (e.g. uncommitted changes → `simplify`; a fresh ticket or vague
    goal → `work`, or `spec` if the user only wants a design doc to hand off; UI
    files in the diff → `ui`; missing or stale docs → `docs`; outdated/vulnerable
-   deps in the manifest → `upgrade`/`audit`; failing or flaky CI → `deflake`).
-   The recommendation is a suggestion the user confirms.
+   deps in the manifest → `upgrade`/`audit`; failing or flaky CI → `deflake`;
+   no config present yet → suggest `init` first). The recommendation is a suggestion
+   the user confirms.
 
 4. **No clear command match at all** → treat the full input as a development task
    and load **work** (the default lifecycle), using the input as the brief.
+
+### Config resolution (before handing off to any command except `init`)
+
+Resolve effective config by overlaying, highest wins: `./.absolute.config.json` (project) →
+`~/.absolute/config.json` `projects["<cwd>"]` → `~/.absolute/config.json` `defaults`.
+Shallow-merge `conventions` and `preferences`. Apply the resolved preferences to the
+command (output style, autonomy/gating, TDD strictness, spec dir).
+
+If **no** project or global config exists, emit one line then continue with on-the-fly
+detection — do **not** block:
+
+> No absolute config found — `/absolute init` caches your stack + preferences so commands
+> skip re-detection. Continuing with on-the-fly detection.
+
+This is a soft recommendation, shown at most once per invocation. See
+[references/init.md](references/init.md) for the schema and precedence.
 
 Once a command reference is loaded, follow its own activation banner, gates, and
 flow. Sub-command references do not re-invoke this router.

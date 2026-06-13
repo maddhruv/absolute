@@ -1,10 +1,10 @@
 # Contributing to Absolute
 
 Thanks for your interest in contributing! Absolute is a single skill,
-`absolute`, that dispatches ten commands — a build loop (`work`, `spec`, `ui`,
-`simplify`, `docs`) and an engineering-health family (`upgrade`, `audit`, `prune`,
-`debt`, `deflake`) — via a thin router. Contributions edit a command flow, its
-deep-dive references, or the router itself — not standalone skill folders.
+`absolute`, that dispatches eleven commands — a one-time `init` (setup), a build loop
+(`work`, `spec`, `ui`, `simplify`, `docs`) and an engineering-health family (`upgrade`,
+`audit`, `prune`, `debt`, `deflake`) — via a thin router. Contributions edit a command
+flow, its deep-dive references, or the router itself — not standalone skill folders.
 
 ## Structure
 
@@ -13,11 +13,16 @@ skills/absolute/
   SKILL.md                 # Required - the router (frontmatter + routing rules + command table)
   README.md                # Required - skill landing page
   references/
+    init.md                                          # one-time setup: interview + detect → config
     work.md, spec.md, ui.md, simplify.md, docs.md   # build-loop command flows
     upgrade.md, audit.md, prune.md, debt.md, deflake.md   # engineering-health command flows
     health-engine.md          # shared loop for the 5 health commands (not a command)
     work/, ui/, simplify/, docs/            # each command's deep-dive guides (spec reuses work/spec-writing.md)
 ```
+
+`init` writes JSON config the other commands read: `.absolute.config.json` (per project,
+committed) and `~/.absolute/config.json` (user defaults + per-project overrides,
+machine-local). These are skill-managed state, not part of the skill source.
 
 ## Editing or adding a command
 

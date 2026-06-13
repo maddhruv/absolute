@@ -7,11 +7,18 @@ generated: '2026-06-13'
 total_skills: 1
 skills:
 - name: absolute
-  version: 0.2.0
-  description: A focused development workflow engine for AI coding agents, invoked as `/absolute <command> [target]`. One skill, four commands covering think → plan → build → polish → document - work (end-to-end phase-gated SDLC), ui (polished interface design), simplify (autonomous code simplification), and docs (Diátaxis documentation).
+  version: 0.5.0
+  description: A focused development workflow engine for AI coding agents, invoked as `/absolute <command> [target]`. One skill, eleven commands - a one-time init (interview + stack detection → JSON config), a build loop (work, spec, ui, simplify, docs) and an engineering-health family (upgrade, audit, prune, debt, deflake).
   category: workflow
   commands:
+  - init
   - work
+  - spec
   - ui
   - simplify
   - docs
+  - upgrade
+  - audit
+  - prune
+  - debt
+  - deflake

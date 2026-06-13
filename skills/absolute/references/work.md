@@ -86,7 +86,8 @@ without explicit user confirmation.**
 ## Codebase Convention Detection
 
 **Before INTAKE begins**, auto-detect the project's conventions so every phase is grounded
-in reality, not assumptions.
+in reality, not assumptions. If `.absolute.config.json` or `~/.absolute/config.json` exists
+(from `/absolute init`), read its cached `conventions` first and detect only what's missing.
 
 | Signal | Files to Check |
 |---|---|

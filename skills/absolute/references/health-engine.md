@@ -38,9 +38,11 @@ These commands are **standing-health** work on the whole repo, distinct from `si
 
 ## Step 1 — DETECT
 
-Auto-detect the stack so every command speaks the project's real tools. Use the
-**Codebase Convention Detection** table in `references/work.md` (package manager,
-language/runtime, test runner, linter/formatter, build, CI, available scripts).
+Auto-detect the stack so every command speaks the project's real tools. If
+`.absolute.config.json` or `~/.absolute/config.json` exists (from `/absolute init`), read
+its cached `conventions` first and skip re-detection; otherwise use the **Codebase
+Convention Detection** table in `references/work.md` (package manager, language/runtime,
+test runner, linter/formatter, build, CI, available scripts).
 
 Always drive fixes through the project's own scripts (`npm test`, `make lint`), never raw
 tools, so results match CI. Note the ecosystem(s) — each command reference lists the
