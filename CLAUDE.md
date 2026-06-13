@@ -1,46 +1,37 @@
-# AbsolutelySkilled
+# Absolute
 
-A focused toolkit of production-ready skills for AI coding agents: absolute-work, absolute-ui, absolute-simplify, and absolute-documentations.
+A focused development workflow engine for AI coding agents: one skill, `absolute`, with four commands — `work`, `ui`, `simplify`, and `docs` — dispatched as `/absolute <command> [target]`.
 
 ## Project Structure
 
 ```
-skills/<skill-name>/        # Each skill is a self-contained folder
-  SKILL.md                  # Core skill content (required, under 500 lines)
+skills/absolute/            # The single skill
+  SKILL.md                  # Router: frontmatter + routing rules + command table (under 500 lines)
   README.md                 # Skill landing page (required)
-  evals.json                # Test suite (required, 10-15 evals)
-  sources.yaml              # Crawl provenance (required for URL-based skills)
-  references/               # Deep-dive files loaded on demand (under 400 lines each)
+  references/
+    work.md, ui.md, simplify.md, docs.md   # one flow per command
+    work/, ui/, simplify/, docs/            # each command's deep-dive guides (under 400 lines each)
 CONTRIBUTING.md             # Full contribution guide
 ```
 
-## Skills
+## The Skill
 
-- Every skill lives in `skills/<skill-name>/` and must contain both a `SKILL.md` and a `README.md`
-- Follow the README pattern from existing skills (e.g., `skills/absolute-work/README.md`): description, install command, overview, tags, platforms, recommended skills, maintainers, and footer link
+- The skill lives in `skills/absolute/` with a `SKILL.md` (the router) and a `README.md`
+- Each command's full flow lives in `references/<command>.md`; deep-dive guides are namespaced under `references/<command>/`
+- The `SKILL.md` command table and routing rules must stay in sync with the `references/<command>.md` files that exist
 
 ## SKILL.md Requirements
 
-- Frontmatter must include: `name`, `version`, `description`, `category`, `tags`, `platforms`, `license`, `maintainers`
+- Frontmatter must include: `name`, `version`, `description`, `category`, `tags`, `platforms`, `license`, `maintainers`, `user-invocable`, `argument-hint`
 - Valid categories: engineering, operations, marketing, ai-ml, design, product, devtools, sales, data, infra, monitoring, cloud, writing, workflow, analytics, game-development, developer-tools, communication, video
 - `license` should be `MIT`
-- Description must name the tool/domain and list 3-5 concrete tasks
-- Body follows standard section order (see existing skills for examples)
+- Description must name each command and list its concrete tasks
 - Total file must be under 500 lines
 - All code examples must be syntactically valid
 
-## evals.json Requirements
+## Maintaining the Skill
 
-Write 10-15 evals covering:
-- 2-3 trigger tests
-- 4-5 core task tests
-- 2-3 gotcha/edge case tests
-- 1-2 anti-hallucination tests
-- 1 references load test
-
-## Maintaining Skills
-
-This is a focused 4-skill toolkit (absolute-work, absolute-ui, absolute-simplify, absolute-documentations) — not an open registry. When editing a skill, keep its `SKILL.md`, `README.md`, and `evals.json` in sync.
+This is a focused single-skill toolkit — `absolute` with four commands (`work`, `ui`, `simplify`, `docs`), not an open registry. When editing a command, keep `SKILL.md` (router), `README.md`, and the command's `references/<command>.md` in sync.
 
 ## Package Manager
 

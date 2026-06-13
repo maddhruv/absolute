@@ -1,64 +1,47 @@
-# Contributing to AbsolutelySkilled
+# Contributing to Absolute
 
-Thanks for your interest in contributing! This project thrives on community-built skills.
+Thanks for your interest in contributing! Absolute is a single skill,
+`absolute`, that dispatches four commands (`work`, `ui`, `simplify`, `docs`) via a
+thin router. Contributions edit a command flow, its deep-dive references, or the
+router itself — not standalone skill folders.
 
-## Adding a new skill
-
-### Using skill-forge (recommended)
-
-The fastest way to create a skill is with the `skill-forge` skill in Claude Code:
-
-```
-/skill-forge <url-or-topic>
-```
-
-This generates a complete skill folder with SKILL.md, evals.json, and sources.yaml.
-
-### Manual creation
-
-Create a folder under `skills/<skill-name>/` with at minimum:
+## Structure
 
 ```
-skills/<skill-name>/
-  SKILL.md        # Required - core skill content
-  evals.json      # Required - test suite
-  sources.yaml    # Required for URL-based skills, optional for domain skills
-  references/     # Optional - deep-dive files
+skills/absolute/
+  SKILL.md                 # Required - the router (frontmatter + routing rules + command table)
+  README.md                # Required - skill landing page
+  references/
+    work.md, ui.md, simplify.md, docs.md   # one flow per command
+    work/, ui/, simplify/, docs/            # each command's deep-dive guides
 ```
 
-### SKILL.md requirements
+## Editing or adding a command
 
-- Frontmatter must include: `name`, `version`, `description`, `category`, `tags`, `platforms`, `license`, `maintainers`
-- Description must name the tool/domain and list 3-5 concrete tasks
-- Body must follow the standard section order (see existing skills for examples)
+1. The command's full flow lives in `references/<command>.md`. Edit it there.
+2. Deep-dive guides go under `references/<command>/` and load on demand.
+3. To add a new command, create `references/<command>.md`, then add a row to the command
+   table and the routing rules in `SKILL.md`.
+
+### SKILL.md (router) requirements
+
+- Frontmatter must include: `name`, `version`, `description`, `category`, `tags`, `platforms`, `license`, `maintainers`, `user-invocable`, `argument-hint`
+- Description must name each command and list its concrete tasks
+- The command table and routing rules must stay in sync with the `references/<command>.md` files that exist
 - Total file must be under 500 lines
 - All code examples must be syntactically valid
-- All domain advice must be actionable, not generic
 
-### evals.json requirements
+## Updating a command
 
-Write 10-15 evals covering:
-- 2-3 trigger tests
-- 4-5 core task tests
-- 2-3 gotcha/edge case tests
-- 1-2 anti-hallucination tests
-- 1 references load test
-
-## Updating an existing skill
-
-- Read the existing SKILL.md and sources.yaml first
-- Check if the upstream docs have changed
-- Update `version` in frontmatter (semver)
-- Update `sources` with new accessed dates
-- Add or update evals for any new content
+- Read the `references/<command>.md` flow first
+- Bump `version` in `SKILL.md` frontmatter (semver)
+- Keep `SKILL.md`, `README.md`, and the command's `references/<command>.md` in sync
 
 ## Pull request checklist
 
-- [ ] Skill folder is in `skills/<skill-name>/`
-- [ ] SKILL.md is under 500 lines
-- [ ] All references/ files are under 400 lines
-- [ ] evals.json has 10-15 evals across all categories
-- [ ] sources.yaml URLs point to official docs only (if applicable)
+- [ ] Changes live under `skills/absolute/`
+- [ ] `SKILL.md` is under 500 lines and its command table/routing match the `references/<command>.md` files
+- [ ] All `references/` files are under 400 lines
 - [ ] `license: MIT` in frontmatter
 
 ## Code of conduct
