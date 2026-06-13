@@ -7,19 +7,17 @@ A focused toolkit of production-ready skills for AI coding agents: absolute-work
 ```
 skills/<skill-name>/        # Each skill is a self-contained folder
   SKILL.md                  # Core skill content (required, under 500 lines)
-  README.md                 # Required for website build
+  README.md                 # Skill landing page (required)
   evals.json                # Test suite (required, 10-15 evals)
   sources.yaml              # Crawl provenance (required for URL-based skills)
   references/               # Deep-dive files loaded on demand (under 400 lines each)
-website/                    # Astro + Tailwind + React islands site
 CONTRIBUTING.md             # Full contribution guide
 ```
 
 ## Skills
 
 - Every skill lives in `skills/<skill-name>/` and must contain both a `SKILL.md` and a `README.md`
-- `README.md` is required for the Astro website build - missing it will break the build
-- Follow the README pattern from existing skills (e.g., `skills/cli-design/README.md`): description, install command, overview, tags, platforms, recommended skills, maintainers, and footer link
+- Follow the README pattern from existing skills (e.g., `skills/absolute-work/README.md`): description, install command, overview, tags, platforms, recommended skills, maintainers, and footer link
 
 ## SKILL.md Requirements
 
@@ -42,12 +40,8 @@ Write 10-15 evals covering:
 
 ## Maintaining Skills
 
-This is a focused 4-skill toolkit (absolute-work, absolute-ui, absolute-simplify, absolute-documentations) — not an open registry. When editing a skill, keep its `SKILL.md`, `README.md`, and `evals.json` in sync and re-run the website build to verify.
+This is a focused 4-skill toolkit (absolute-work, absolute-ui, absolute-simplify, absolute-documentations) — not an open registry. When editing a skill, keep its `SKILL.md`, `README.md`, and `evals.json` in sync.
 
 ## Package Manager
 
 Use `npm` for this project (not pnpm/yarn/bun).
-
-## Website
-
-The website lives in `website/` and is built with Astro. It reads skill data from `skills/*/README.md` - every skill must have a README or the build will fail.

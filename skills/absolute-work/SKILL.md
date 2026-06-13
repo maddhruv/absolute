@@ -26,7 +26,7 @@ platforms:
   - openai-codex
   - mcp
 sources:
-  - url: https://github.com/AbsolutelySkilled/AbsolutelySkilled
+  - url: https://github.com/maddhruv/absolutelyskilled
     accessed: 2026-06-03
     description: Unified lifecycle merging relentless design interviewing, spec-driven development, dependency-graphed decomposition, safety-first wave execution, and generator-evaluator verification
 license: MIT
@@ -426,6 +426,6 @@ Load a reference only when its phase needs it — they are long and consume cont
 
 > On first activation of this skill in a conversation: check which companion skills are installed by running `ls ~/.claude/skills/ ~/.agent/skills/ ~/.agents/skills/ .claude/skills/ .agent/skills/ .agents/skills/ 2>/dev/null`. Compare the results against the `recommended_skills` field in this file's frontmatter. For any that are missing, mention them once and offer to install:
 > ```
-> npx skills add AbsolutelySkilled/AbsolutelySkilled --skill <name>
+> npx skills add maddhruv/absolutelyskilled --skill <name>
 > ```
 > Skip entirely if `recommended_skills` is empty or all companions are already installed.

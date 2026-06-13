@@ -3,7 +3,6 @@ set -euo pipefail
 
 # Fetches per-skill install counts from skills.sh and writes to data/installs.json.
 # This file is consumed by:
-#   - The Astro website (build-time fallback + runtime fetch from GitHub raw)
 #   - The README badge via shields.io dynamic endpoint
 #
 # Run manually:   ./scripts/fetch-installs.sh
@@ -16,13 +15,13 @@ mkdir -p "$(dirname "$OUTPUT")"
 
 echo "Fetching install counts from skills.sh..."
 
-curl -sf 'https://skills.sh/api/search?q=AbsolutelySkilled&limit=500' | \
+curl -sf 'https://skills.sh/api/search?q=absolutelyskilled&limit=500' | \
   python3 -c "
 import json, sys
 from datetime import datetime, timezone
 
 data = json.load(sys.stdin)
-skills = [s for s in data['skills'] if s['source'] == 'absolutelyskilled/absolutelyskilled']
+skills = [s for s in data['skills'] if s['source'] == 'maddhruv/absolutelyskilled']
 
 installs = {}
 total = 0

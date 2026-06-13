@@ -19,7 +19,7 @@ absolute-work is a production-ready AI agent skill for claude-code, gemini-cli, 
 2. Run the following command in your terminal:
 
 ```bash
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-work
+npx skills add maddhruv/absolutelyskilled --skill absolute-work
 ```
 
 3. The absolute-work skill is now available in your AI coding agent (Claude Code, Gemini CLI, OpenAI Codex, etc.).
@@ -84,9 +84,9 @@ It relentlessly interviews you to a shared design (one question at a time, codeb
 
 Pair absolute-work with these complementary skills:
 
-- [absolute-simplify](https://www.absolutelyskilled.pro/skill/absolute-simplify)
-- [absolute-ui](https://www.absolutelyskilled.pro/skill/absolute-ui)
-- [absolute-documentations](https://www.absolutelyskilled.pro/skill/absolute-documentations)
+- [absolute-simplify](https://github.com/maddhruv/absolutelyskilled/tree/main/skills/absolute-simplify)
+- [absolute-ui](https://github.com/maddhruv/absolutelyskilled/tree/main/skills/absolute-ui)
+- [absolute-documentations](https://github.com/maddhruv/absolutelyskilled/tree/main/skills/absolute-documentations)
 
 ## Frequently Asked Questions
 
@@ -104,7 +104,7 @@ No — absolute-work is fully local by design. "Ticket", "task", "planning", and
 
 ### How do I install absolute-work?
 
-Run `npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-work` in your terminal. The skill will be immediately available in your AI coding agent.
+Run `npx skills add maddhruv/absolutelyskilled --skill absolute-work` in your terminal. The skill will be immediately available in your AI coding agent.
 
 ### What AI agents support absolute-work?
 
@@ -116,4 +116,4 @@ This skill works with claude-code, gemini-cli, openai-codex, mcp. Install it onc
 
 ---
 
-*Generated from [AbsolutelySkilled](https://www.absolutelyskilled.pro/skill/absolute-work)*
+*Generated from [AbsolutelySkilled](https://github.com/maddhruv/absolutelyskilled/tree/main/skills/absolute-work)*

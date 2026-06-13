@@ -19,7 +19,7 @@ absolute-documentations is a production-ready AI agent skill for claude-code, ge
 2. Run the following command in your terminal:
 
 ```bash
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-documentations
+npx skills add maddhruv/absolutelyskilled --skill absolute-documentations
 ```
 
 3. The absolute-documentations skill is now available in your AI coding agent (Claude Code, Gemini CLI, OpenAI Codex, etc.).
@@ -82,8 +82,8 @@ It works codebase-first: detects your docs stack, reads your existing pages for 
 
 Pair absolute-documentations with these complementary skills:
 
-- [absolute-work](https://www.absolutelyskilled.pro/skill/absolute-work)
-- [absolute-ui](https://www.absolutelyskilled.pro/skill/absolute-ui)
+- [absolute-work](https://github.com/maddhruv/absolutelyskilled/tree/main/skills/absolute-work)
+- [absolute-ui](https://github.com/maddhruv/absolutelyskilled/tree/main/skills/absolute-ui)
 
 ## Frequently Asked Questions
 
@@ -105,7 +105,7 @@ No. The accuracy protocol requires every snippet, flag, default, and output to b
 
 ### How do I install absolute-documentations?
 
-Run `npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-documentations` in your terminal. The skill will be immediately available in your AI coding agent.
+Run `npx skills add maddhruv/absolutelyskilled --skill absolute-documentations` in your terminal. The skill will be immediately available in your AI coding agent.
 
 ### What AI agents support absolute-documentations?
 
@@ -117,4 +117,4 @@ This skill works with claude-code, gemini-cli, openai-codex, mcp. Install it onc
 
 ---
 
-*Generated from [AbsolutelySkilled](https://www.absolutelyskilled.pro/skill/absolute-documentations)*
+*Generated from [AbsolutelySkilled](https://github.com/maddhruv/absolutelyskilled/tree/main/skills/absolute-documentations)*

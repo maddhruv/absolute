@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://avatars.githubusercontent.com/u/268155241?s=200&v=4" width="120" alt="AbsolutelySkilled logo" />
+  <img src="./logo.png" width="120" alt="AbsolutelySkilled logo" />
 </p>
 
 <h1 align="center">AbsolutelySkilled</h1>
@@ -7,10 +7,10 @@
 <p align="center">
   A focused toolkit of production-ready skills for AI coding agents.
   <br />
-  <a href="https://www.absolutelyskilled.pro/">www.absolutelyskilled.pro</a>
+  <a href="https://github.com/maddhruv/absolutelyskilled">github.com/maddhruv/absolutelyskilled</a>
   <br /><br />
-  <a href="https://skills.sh/registry/absolutelyskilled/absolutelyskilled">
-    <img src="https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/AbsolutelySkilled/AbsolutelySkilled/main/data/installs.json&query=%24._total&label=total%20installs&color=brightgreen" alt="Total Installs" />
+  <a href="https://skills.sh/registry/maddhruv/absolutelyskilled">
+    <img src="https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/maddhruv/absolutelyskilled/main/data/installs.json&query=%24._total&label=total%20installs&color=brightgreen" alt="Total Installs" />
   </a>
 </p>
 
@@ -40,7 +40,7 @@ One continuous, phase-gated lifecycle that takes any unit of work — a ticket, 
 **Install:**
 
 ```bash
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-work
+npx skills add maddhruv/absolutelyskilled --skill absolute-work
 ```
 
 **Usage:**
@@ -73,7 +73,7 @@ The most comprehensive UI design knowledge base for AI coding agents — 25 refe
 **Install:**
 
 ```bash
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-ui
+npx skills add maddhruv/absolutelyskilled --skill absolute-ui
 ```
 
 **Usage:**
@@ -90,7 +90,7 @@ Detects your staged or unstaged git changes, analyzes them for simplification op
 **Install:**
 
 ```bash
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-simplify
+npx skills add maddhruv/absolutelyskilled --skill absolute-simplify
 ```
 
 **Usage:**
@@ -107,7 +107,7 @@ Writes, improves, and audits documentation using the Diátaxis framework — one
 **Install:**
 
 ```bash
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-documentations
+npx skills add maddhruv/absolutelyskilled --skill absolute-documentations
 ```
 
 **Usage:**
@@ -128,28 +128,28 @@ Skills are installed using the [`skills`](https://github.com/vercel-labs/skills)
 
 ```bash
 # Install all skills from this toolkit
-npx skills add AbsolutelySkilled/AbsolutelySkilled
+npx skills add maddhruv/absolutelyskilled
 
 # List available skills before installing
-npx skills add AbsolutelySkilled/AbsolutelySkilled --list
+npx skills add maddhruv/absolutelyskilled --list
 
 # Install a specific skill
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-work
+npx skills add maddhruv/absolutelyskilled --skill absolute-work
 
 # Install multiple specific skills
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-work --skill absolute-ui
+npx skills add maddhruv/absolutelyskilled --skill absolute-work --skill absolute-ui
 
 # Install globally (available across all projects)
-npx skills add AbsolutelySkilled/AbsolutelySkilled -g
+npx skills add maddhruv/absolutelyskilled -g
 
 # Install to a specific agent
-npx skills add AbsolutelySkilled/AbsolutelySkilled -a claude-code
+npx skills add maddhruv/absolutelyskilled -a claude-code
 
 # Non-interactive install (CI/CD friendly)
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-work -g -a claude-code -y
+npx skills add maddhruv/absolutelyskilled --skill absolute-work -g -a claude-code -y
 
 # Install all skills to all agents
-npx skills add AbsolutelySkilled/AbsolutelySkilled --all
+npx skills add maddhruv/absolutelyskilled --all
 ```
 
 ### Install Options
@@ -200,11 +200,10 @@ The CLI supports 40+ agents including Claude Code, Codex, Cursor, Gemini CLI, Gi
 skills/
   <skill-name>/
     SKILL.md           # Core skill content (under 500 lines)
-    README.md          # Skill landing page (powers the website)
+    README.md          # Skill landing page
     evals.json         # Test suite validating the skill works
     references/        # Deep-dive files loaded on demand
       <topic>.md
-website/               # Astro + Tailwind site, reads skills/*/README.md
 ```
 
 ## Recommended Workflow

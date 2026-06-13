@@ -417,7 +417,7 @@ references.
 > Compare the results against the `recommended_skills` field in this file's
 > frontmatter. For any that are missing, mention them once and offer to install:
 > ```
-> npx skills add AbsolutelySkilled/AbsolutelySkilled --skill <name>
+> npx skills add maddhruv/absolutelyskilled --skill <name>
 > ```
 > Skip entirely if `recommended_skills` is empty or all companions are already
 > installed.

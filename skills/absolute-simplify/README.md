@@ -17,7 +17,7 @@ absolute-simplify is a production-ready AI agent skill for claude-code, gemini-c
 2. Run the following command in your terminal:
 
 ```bash
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-simplify
+npx skills add maddhruv/absolutelyskilled --skill absolute-simplify
 ```
 
 3. The absolute-simplify skill is now available in your AI coding agent (Claude Code, Gemini CLI, OpenAI Codex, etc.).
@@ -37,9 +37,9 @@ npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-simplify
 
 Pair absolute-simplify with these complementary skills:
 
-- [absolute-work](https://www.absolutelyskilled.pro/skill/absolute-work)
-- [absolute-ui](https://www.absolutelyskilled.pro/skill/absolute-ui)
-- [absolute-documentations](https://www.absolutelyskilled.pro/skill/absolute-documentations)
+- [absolute-work](https://github.com/maddhruv/absolutelyskilled/tree/main/skills/absolute-work)
+- [absolute-ui](https://github.com/maddhruv/absolutelyskilled/tree/main/skills/absolute-ui)
+- [absolute-documentations](https://github.com/maddhruv/absolutelyskilled/tree/main/skills/absolute-documentations)
 
 ## Frequently Asked Questions
 
@@ -49,7 +49,7 @@ absolute-simplify autonomously simplifies code in your working changes or target
 
 ### How do I install absolute-simplify?
 
-Run `npx skills add AbsolutelySkilled/AbsolutelySkilled --skill absolute-simplify` in your terminal. The skill will be immediately available in your AI coding agent.
+Run `npx skills add maddhruv/absolutelyskilled --skill absolute-simplify` in your terminal. The skill will be immediately available in your AI coding agent.
 
 ### What AI agents support absolute-simplify?
 
@@ -61,4 +61,4 @@ This skill works with claude-code, gemini-cli, openai-codex, mcp. Install it onc
 
 ---
 
-*Generated from [AbsolutelySkilled](https://www.absolutelyskilled.pro/skill/absolute-simplify)*
+*Generated from [AbsolutelySkilled](https://github.com/maddhruv/absolutelyskilled/tree/main/skills/absolute-simplify)*
