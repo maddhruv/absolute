@@ -1,6 +1,33 @@
-# Command: `init` — Set Up Absolute For This Project
+---
+name: absolute-init
+version: 0.5.0
+description: >
+  One-time setup for absolute: interview how you want it to behave (output style,
+  autonomy, TDD strictness, spec dir, families) + detect the stack once, then write
+  `.absolute.config.json` (project, committed) and `~/.absolute/config.json` (user
+  defaults + per-project overrides). Every other absolute-* command reads it instead
+  of re-detecting; non-blocking — commands proceed without it and soft-recommend it.
+  Triggers on "absolute init", "set up absolute", "initialize absolute",
+  "configure absolute", "first-time setup", "remember my conventions for this repo".
+category: workflow
+tags:
+  - workflow
+  - configuration
+  - init
+  - setup
+  - sdlc
+platforms:
+  - claude-code
+  - gemini-cli
+  - openai-codex
+  - mcp
+user-invocable: true
+argument-hint: ""
+license: MIT
+maintainers:
+  - github: maddhruv
+---
 
-> Loaded by the `absolute` router when the user runs `/absolute init` (or asks to
 > "set up / initialize / configure absolute").
 > Start your first response with the ⚙️ emoji.
 
@@ -171,5 +198,5 @@ config — the command soft-recommends `init` and uses on-the-fly detection.
 ## Companion commands
 
 - **`/absolute work`** — the main consumer of cached conventions + `tdd`/`autonomy` prefs.
-- **`/absolute upgrade|audit|prune|debt|deflake`** — health family reads `conventions` for DETECT and `autonomy` for gating.
+- **`/absolute-upgrade|audit|prune|debt|deflake`** — health family reads `conventions` for DETECT and `autonomy` for gating.
 - Re-run **`/absolute init`** anytime conventions or preferences change.

@@ -3,22 +3,71 @@
 # Use this as a sitemap/API for discovering skills
 
 version: 1.0.0
-generated: '2026-06-13'
-total_skills: 1
+generated: '2026-06-24'
+total_skills: 11
 skills:
-- name: absolute
+- name: absolute-init
   version: 0.5.0
-  description: A focused development workflow engine for AI coding agents, invoked as `/absolute <command> [target]`. One skill, eleven commands - a one-time init (interview + stack detection → JSON config), a build loop (work, spec, ui, simplify, docs) and an engineering-health family (upgrade, audit, prune, debt, deflake).
+  description: One-time setup — interview + stack detection → JSON config that every other absolute-* skill reads instead of re-detecting.
   category: workflow
-  commands:
-  - init
-  - work
-  - spec
-  - ui
-  - simplify
-  - docs
-  - upgrade
-  - audit
-  - prune
-  - debt
-  - deflake
+  commands: []
+
+- name: absolute-work
+  version: 0.5.0
+  description: End-to-end, phase-gated SDLC — relentless design interview → reviewed spec → dependency-graphed task board → safe-wave TDD execution → verification → converge.
+  category: workflow
+  commands: []
+
+- name: absolute-spec
+  version: 0.5.0
+  description: Lightweight standalone design spec — codebase scan → bounded clarify pass → reviewed design doc → stop. No build.
+  category: workflow
+  commands: []
+
+- name: absolute-ui
+  version: 0.5.0
+  description: Build polished, intentional UIs with concrete CSS/Tailwind values — typography, color, layout, dark mode, accessibility, animations, components.
+  category: workflow
+  commands: []
+
+- name: absolute-simplify
+  version: 0.5.0
+  description: Autonomously simplify staged/unstaged git changes or a target path — reduce complexity, flatten nesting, remove redundancy and dead code.
+  category: workflow
+  commands: []
+
+- name: absolute-docs
+  version: 0.5.0
+  description: Diátaxis-driven documentation — write, improve, or audit tutorials, how-tos, reference, explanation, and developer docs.
+  category: workflow
+  commands: []
+
+- name: absolute-upgrade
+  version: 0.5.0
+  description: Dependency upgrades in semver waves — patch/minor batched, majors gated and changelog-read, tests green after each.
+  category: workflow
+  commands: []
+
+- name: absolute-audit
+  version: 0.5.0
+  description: Vulnerability and security scan — dependency CVEs plus risky code patterns, severity × reachability triaged and remediated.
+  category: workflow
+  commands: []
+
+- name: absolute-prune
+  version: 0.5.0
+  description: Dead code and dependency cleanup repo-wide — unused deps, unreferenced exports, orphaned files removed with tool evidence.
+  category: workflow
+  commands: []
+
+- name: absolute-debt
+  version: 0.5.0
+  description: Lint and typecheck debt paydown — clear repo-wide violations and suppressions one rule per wave, fixing causes not symptoms.
+  category: workflow
+  commands: []
+
+- name: absolute-deflake
+  version: 0.5.0
+  description: Flaky test fixes — empirical detection, root-cause diagnosis, real fix. Never retry/skip/sleep.
+  category: workflow
+  commands: []

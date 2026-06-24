@@ -1,6 +1,32 @@
-# Command: `simplify` — Autonomous Code Simplification
+---
+name: absolute-simplify
+version: 0.5.0
+description: >
+  Autonomously simplify staged/unstaged git changes or a target path — reduce
+  complexity, flatten nesting, remove redundancy and dead code — then run tests
+  to prove nothing broke. Acts on your working diff; for repo-wide dead code use
+  absolute-prune; for lint/type debt use absolute-debt.
+  Triggers on "absolute simplify", "simplify this", "clean up my changes",
+  "refactor this", "reduce complexity", "remove dead code", "tidy this up".
+category: workflow
+tags:
+  - workflow
+  - simplification
+  - refactoring
+  - cleanup
+  - code-quality
+platforms:
+  - claude-code
+  - gemini-cli
+  - openai-codex
+  - mcp
+user-invocable: true
+argument-hint: "[target]"
+license: MIT
+maintainers:
+  - github: maddhruv
+---
 
-> Loaded by the `absolute` router when the user runs `/absolute simplify …`.
 > Start your first response with the broom emoji.
 
 ## Absolute Simplify
@@ -145,11 +171,11 @@ Inspect file extensions in the working set:
 
 | Extensions | Load reference |
 |---|---|
-| `.js`, `.ts`, `.tsx`, `.jsx`, `.mjs`, `.cjs` | `references/simplify/javascript.md` |
-| `.py`, `.pyi` | `references/simplify/python.md` |
-| `.go` | `references/simplify/golang.md` |
+| `.js`, `.ts`, `.tsx`, `.jsx`, `.mjs`, `.cjs` | `references/javascript.md` |
+| `.py`, `.pyi` | `references/python.md` |
+| `.go` | `references/golang.md` |
 
-**Always** load `references/simplify/simplification-catalog.md` (universal patterns).
+**Always** load `references/simplification-catalog.md` (universal patterns).
 
 If multiple languages are in scope, load all relevant references. But if one
 language dominates (>80% of files), only load that language's reference to
@@ -369,15 +395,15 @@ code theory in the summary -- just state what changed and why in plain language.
 For detailed language-specific guidance, these reference files are loaded
 automatically based on the languages detected in Phase 3:
 
-- **`references/simplify/simplification-catalog.md`** - Always loaded. Universal
+- **`references/simplification-catalog.md`** - Always loaded. Universal
   simplification patterns: nesting reduction, dead code removal, redundancy
   elimination, expression simplification, naming rules, what NOT to simplify
-- **`references/simplify/javascript.md`** - Loaded for .js/.ts/.tsx/.jsx files. ES modules,
+- **`references/javascript.md`** - Loaded for .js/.ts/.tsx/.jsx files. ES modules,
   function declarations, React patterns, TypeScript narrowing, error handling,
   import organization
-- **`references/simplify/python.md`** - Loaded for .py files. PEP 8, type hints,
+- **`references/python.md`** - Loaded for .py files. PEP 8, type hints,
   dataclasses, context managers, comprehensions, pathlib, error handling
-- **`references/simplify/golang.md`** - Loaded for .go files. Effective Go patterns,
+- **`references/golang.md`** - Loaded for .go files. Effective Go patterns,
   error handling idioms, interface design, table-driven tests, defer patterns
 
 Only load a reference file when that language is in scope. Do not preload all

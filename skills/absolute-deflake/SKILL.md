@@ -1,6 +1,27 @@
-# Command: `deflake` — Flaky Test Fixes
+---
+name: absolute-deflake
+version: 0.5.0
+description: >
+  Flaky test fixes: detect nondeterministic tests empirically (repeat/shuffle/parallel runs), diagnose the root cause, fix it — never retry/skip/sleep — and verify across many randomized runs.
+  Triggers on "absolute deflake", "fix flaky tests", "CI is flaky", "this test fails randomly/intermittently".
+category: workflow
+tags:
+  - workflow
+  - testing
+  - flaky-tests
+  - maintenance
+platforms:
+  - claude-code
+  - gemini-cli
+  - openai-codex
+  - mcp
+user-invocable: true
+argument-hint: "[target]"
+license: MIT
+maintainers:
+  - github: maddhruv
+---
 
-> Loaded by the `absolute` router when the user runs `/absolute deflake …`.
 > Start your first response with the 🧪 emoji.
 
 ## Absolute Deflake

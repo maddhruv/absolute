@@ -1,6 +1,34 @@
-# Command: `work` — End-to-End AI Development Lifecycle
+---
+name: absolute-work
+version: 0.5.0
+description: >
+  End-to-end, phase-gated SDLC for AI coding agents: relentless design interview →
+  reviewed spec → dependency-graphed task board → safe-wave TDD execution →
+  verification → converge. Handles features, bugs, refactors, greenfield projects,
+  planning breakdowns, and migrations.
+  Triggers on "absolute work", "build this end-to-end", "plan and build",
+  "break this into tasks", "grill me on this plan", "pick up this ticket",
+  "run this migration".
+category: workflow
+tags:
+  - workflow
+  - sdlc
+  - planning
+  - tdd
+  - spec
+  - specification
+platforms:
+  - claude-code
+  - gemini-cli
+  - openai-codex
+  - mcp
+user-invocable: true
+argument-hint: "[target]"
+license: MIT
+maintainers:
+  - github: maddhruv
+---
 
-> Loaded by the `absolute` router when the user runs `/absolute work …`.
 > Start your first response with the 🛠️ emoji.
 
 ## Absolute Work: End-to-End AI Development Lifecycle
@@ -131,7 +159,7 @@ verification through the project's own scripts (`npm test`, `make lint`), never 
 3. **Relentless until aligned.** Interview one question at a time until BOTH you and the user are 100% confident. Doubt on either side means keep going.
 4. **Spec before code.** No implementation until a written spec is reviewed and approved.
 5. **Dependency-first decomposition.** Every task is a node in a DAG, not a flat list.
-6. **Safety-first execution.** Blockers and dependents run **sequentially**; only **provably-independent** tasks parallelize. When in doubt, serialize. (See `references/work/execution-model.md`.)
+6. **Safety-first execution.** Blockers and dependents run **sequentially**; only **provably-independent** tasks parallelize. When in doubt, serialize. (See `references/execution-model.md`.)
 7. **Test-first verification.** Every task writes tests before implementation. "Done" means tests pass.
 8. **Generator ≠ evaluator.** The agent that builds a task does not grade it.
 9. **Persistent state.** All progress lives in `.absolute-work/board.md`, surviving across sessions.
@@ -162,10 +190,10 @@ manifests, top-level structure. Synthesize what matters — do not dump a file l
 **Before asking ANY question, check if the codebase answers it.** Facts live in code
 (database, test framework, auth); preferences require asking (visual style, real-time vs batch).
 When code answers it, state what you found: "I see you're using Prisma with PostgreSQL — I'll
-design around that." See `references/work/intake-playbook.md`.
+design around that." See `references/intake-playbook.md`.
 
 ### Step 3 — Detect the work TYPE and adapt
-Identify the type and swap in its tailored question bank (full banks in `references/work/intake-playbook.md`):
+Identify the type and swap in its tailored question bank (full banks in `references/intake-playbook.md`):
 
 | Type | Focus |
 |---|---|
@@ -174,7 +202,7 @@ Identify the type and swap in its tailored question bank (full banks in `referen
 | **Refactor** | pain point, target state, blast radius, test safety net, incremental vs all-at-once |
 | **Greenfield** | problem/user fit, v1 scope, stack, data model, deploy target |
 | **Planning / breakdown** | goal, milestones, sequencing, what ships first |
-| **Migration** | what→what, coexistence, rollback, breaking changes, call-site inventory — **load `references/work/migration-playbook.md`** |
+| **Migration** | what→what, coexistence, rollback, breaking changes, call-site inventory — **load `references/migration-playbook.md`** |
 
 ### Step 4 — Scope assessment
 If the request spans multiple independent subsystems, flag it and decompose into sub-projects
@@ -211,7 +239,7 @@ separation): graded on Completeness, Consistency, Clarity, Scope, Testability (1
 - **3.0-3.9** → fix flagged issues, re-dispatch (max 3 iterations)
 - **< 3.0** → surface to the user immediately
 
-See `references/work/spec-writing.md` for the template, scaling rules, and review rubric.
+See `references/spec-writing.md` for the template, scaling rules, and review rubric.
 
 **━━ GATE: user reviews and approves the spec before Phase 3. ━━**
 
@@ -228,14 +256,14 @@ no `L` — decompose further), **Dependencies** (task IDs).
 
 Rules: test tasks separate from code; infra/config before dependents; aim for 5-15 tasks; every
 graph ends with the three **mandatory tail tasks** (Self Code Review → Requirements Validation →
-Full Project Verification — see `references/work/verification-framework.md`). Apply the complexity budget:
+Full Project Verification — see `references/verification-framework.md`). Apply the complexity budget:
 if scope exceeds ~15 M-equivalent tasks, suggest splitting into multiple sessions.
 
 ### Build the DAG and assign safe waves
 Compute each task's depth (`max(dependency depth) + 1`) and group by depth into waves. Then apply
 the **safety pass**: within a wave, only tasks that touch **disjoint files** and share **no
 interfaces** may run in parallel; everything else is serialized. Assign shared-file ownership to a
-single task. When in doubt, serialize. See `references/work/execution-model.md` and `references/work/board-format.md`.
+single task. When in doubt, serialize. See `references/execution-model.md` and `references/board-format.md`.
 
 ### Per-task plan
 For each task: files to create/modify, test files (TDD — written first), approach, acceptance
@@ -268,7 +296,7 @@ for each wave in [Wave 1 … Wave N]:
 Each agent gets a self-contained prompt from the board (conventions + research + plan +
 acceptance criteria) and the rule: write tests first, stay in scope, report blockers — never work
 around them. Scope creep: blocking discoveries become new visible tasks; non-blocking ones go to
-`## Deferred Work`. See `references/work/execution-model.md` for the agent template, conflict
+`## Deferred Work`. See `references/execution-model.md` for the agent template, conflict
 resolution, blocked-task handling, and failure recovery.
 
 ---
@@ -285,7 +313,7 @@ Every task proves it works before closing, using two layers:
    Safety). 4.0+ passes; 3.0-3.9 iterates on specific feedback (max 5); < 3.0 escalates to the user.
 
 S-size tasks may skip the evaluator if all signals pass cleanly; M-size, failed, or
-shared-interface tasks always get it. See `references/work/verification-framework.md`.
+shared-interface tasks always get it. See `references/verification-framework.md`.
 
 After the final wave, run the full suite and the three mandatory tail tasks.
 
@@ -381,12 +409,12 @@ Example — destructive op:
 
 Load a reference only when its phase needs it — they are long and consume context.
 
-- **`references/work/intake-playbook.md`** — adaptive question banks per work type, codebase-first intelligence, design-tree traversal, calibration, example sessions
-- **`references/work/migration-playbook.md`** — first-class migration handling: call-site inventory, codemods, incremental rollout, backwards-compat, rollback
-- **`references/work/spec-writing.md`** — spec template, section scaling, writing style, decision log, scored review protocol
-- **`references/work/board-format.md`** — full `.absolute-work/board.md` spec, statuses, sequence/wave model, example board
-- **`references/work/execution-model.md`** — DAG patterns, safe-wave (sequential-blocker / parallel-independent) algorithm, agent prompt template, conflict handling, scope-creep and failure recovery
-- **`references/work/verification-framework.md`** — TDD per task, verification signals, generator-evaluator protocol, scored rubric, mandatory tail tasks
+- **`references/intake-playbook.md`** — adaptive question banks per work type, codebase-first intelligence, design-tree traversal, calibration, example sessions
+- **`references/migration-playbook.md`** — first-class migration handling: call-site inventory, codemods, incremental rollout, backwards-compat, rollback
+- **`references/spec-writing.md`** — spec template, section scaling, writing style, decision log, scored review protocol
+- **`references/board-format.md`** — full `.absolute-work/board.md` spec, statuses, sequence/wave model, example board
+- **`references/execution-model.md`** — DAG patterns, safe-wave (sequential-blocker / parallel-independent) algorithm, agent prompt template, conflict handling, scope-creep and failure recovery
+- **`references/verification-framework.md`** — TDD per task, verification signals, generator-evaluator protocol, scored rubric, mandatory tail tasks
 
 ---
 

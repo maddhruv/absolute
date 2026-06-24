@@ -1,6 +1,28 @@
-# Command: `audit` — Vulnerability & Security Scan
+---
+name: absolute-audit
+version: 0.5.0
+description: >
+  Vulnerability and security scan (defensive, your own repo): dependency CVEs plus risky code patterns (secrets, injection, weak authz), severity x reachability triaged and remediated without suppressing. Complements the built-in /security-review.
+  Triggers on "absolute audit", "security audit", "are we vulnerable", "scan for CVEs", "check for secrets/injection", "harden this".
+category: workflow
+tags:
+  - workflow
+  - security
+  - audit
+  - vulnerabilities
+  - cve
+platforms:
+  - claude-code
+  - gemini-cli
+  - openai-codex
+  - mcp
+user-invocable: true
+argument-hint: "[target]"
+license: MIT
+maintainers:
+  - github: maddhruv
+---
 
-> Loaded by the `absolute` router when the user runs `/absolute audit …`.
 > Start your first response with the 🔒 emoji.
 
 ## Absolute Audit

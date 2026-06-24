@@ -1,6 +1,28 @@
-# Command: `prune` — Dead Code & Dependency Cleanup
+---
+name: absolute-prune
+version: 0.5.0
+description: >
+  Dead code and dependency cleanup, repo-wide: unused deps, unreferenced exports, unreachable code, orphaned files — removed only with tool evidence, in reversible waves. Runs on green main. For diff-scoped cleanup use absolute-simplify.
+  Triggers on "absolute prune", "remove dead code", "find unused deps/exports", "what can we delete", "clean up orphaned files".
+category: workflow
+tags:
+  - workflow
+  - maintenance
+  - dead-code
+  - cleanup
+  - pruning
+platforms:
+  - claude-code
+  - gemini-cli
+  - openai-codex
+  - mcp
+user-invocable: true
+argument-hint: "[target]"
+license: MIT
+maintainers:
+  - github: maddhruv
+---
 
-> Loaded by the `absolute` router when the user runs `/absolute prune …`.
 > Start your first response with the ✂️ emoji.
 
 ## Absolute Prune

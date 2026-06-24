@@ -1,56 +1,59 @@
 # Contributing to Absolute
 
-Thanks for your interest in contributing! Absolute is a single skill,
-`absolute`, that dispatches eleven commands — a one-time `init` (setup), a build loop
-(`work`, `spec`, `ui`, `simplify`, `docs`) and an engineering-health family (`upgrade`,
-`audit`, `prune`, `debt`, `deflake`) — via a thin router. Contributions edit a command
-flow, its deep-dive references, or the router itself — not standalone skill folders.
+Thanks for your interest in contributing! Absolute is a collection of eleven separate skills — `absolute-init` (setup), a build loop (`absolute-work`, `absolute-spec`, `absolute-ui`, `absolute-simplify`, `absolute-docs`) and an engineering-health family (`absolute-upgrade`, `absolute-audit`, `absolute-prune`, `absolute-debt`, `absolute-deflake`). Each skill is independent.
 
 ## Structure
 
 ```
-skills/absolute/
-  SKILL.md                 # Required - the router (frontmatter + routing rules + command table)
-  README.md                # Required - skill landing page
-  references/
-    init.md                                          # one-time setup: interview + detect → config
-    work.md, spec.md, ui.md, simplify.md, docs.md   # build-loop command flows
-    upgrade.md, audit.md, prune.md, debt.md, deflake.md   # engineering-health command flows
-    health-engine.md          # shared loop for the 5 health commands (not a command)
-    work/, ui/, simplify/, docs/            # each command's deep-dive guides (spec reuses work/spec-writing.md)
+skills/
+  absolute-<name>/
+    SKILL.md          # Required — frontmatter + full command flow
+    README.md         # Required — skill landing page
+    references/       # Optional — deep-dive guides loaded on demand
 ```
 
-`init` writes JSON config the other commands read: `.absolute.config.json` (per project,
-committed) and `~/.absolute/config.json` (user defaults + per-project overrides,
-machine-local). These are skill-managed state, not part of the skill source.
+The five health skills (`upgrade`, `audit`, `prune`, `debt`, `deflake`) each carry a copy of `references/health-engine.md` — the shared loop. `absolute-work` carries the deep-dive guides (`references/spec-writing.md` etc.) that `absolute-spec` cross-references.
 
-## Editing or adding a command
+## Editing a skill
 
-1. The command's full flow lives in `references/<command>.md`. Edit it there.
-2. Deep-dive guides go under `references/<command>/` and load on demand.
-3. To add a new command, create `references/<command>.md`, then add a row to the command
-   table and the routing rules in `SKILL.md`.
+1. Edit `skills/absolute-<name>/SKILL.md` for flow changes.
+2. Deep-dive guides live in `skills/absolute-<name>/references/` — add or edit there.
+3. Bump `version` in the skill's frontmatter (semver).
+4. Keep `SKILL.md` and `README.md` in sync.
 
-### SKILL.md (router) requirements
+## Adding a new skill
 
-- Frontmatter must include: `name`, `version`, `description`, `category`, `tags`, `platforms`, `license`, `maintainers`, `user-invocable`, `argument-hint`
-- Description must name each command and list its concrete tasks
-- The command table and routing rules must stay in sync with the `references/<command>.md` files that exist
-- Total file must be under 500 lines
+1. Create `skills/absolute-<name>/SKILL.md` with required frontmatter.
+2. Create `skills/absolute-<name>/README.md`.
+3. Add an entry to `skills.yaml`.
+
+### SKILL.md frontmatter requirements
+
+- Required fields: `name`, `version`, `description`, `category`, `tags`, `platforms`, `license`, `maintainers`, `user-invocable`, `argument-hint`
+- `license`: `MIT`
+- `category`: one of — engineering, operations, marketing, ai-ml, design, product, devtools, sales, data, infra, monitoring, cloud, writing, workflow, analytics, game-development, developer-tools, communication, video
 - All code examples must be syntactically valid
 
-## Updating a command
+## Updating health-engine.md
 
-- Read the `references/<command>.md` flow first
-- Bump `version` in `SKILL.md` frontmatter (semver)
-- Keep `SKILL.md`, `README.md`, and the command's `references/<command>.md` in sync
+`references/health-engine.md` is copied into each of the five health skill directories. When you change it, update all five copies:
+
+```
+skills/absolute-upgrade/references/health-engine.md
+skills/absolute-audit/references/health-engine.md
+skills/absolute-prune/references/health-engine.md
+skills/absolute-debt/references/health-engine.md
+skills/absolute-deflake/references/health-engine.md
+```
 
 ## Pull request checklist
 
-- [ ] Changes live under `skills/absolute/`
-- [ ] `SKILL.md` is under 500 lines and its command table/routing match the `references/<command>.md` files
-- [ ] All `references/` files are under 400 lines
+- [ ] Changes live under `skills/absolute-<name>/`
+- [ ] `SKILL.md` frontmatter is complete and valid
+- [ ] `README.md` is updated if the skill's purpose or usage changed
 - [ ] `license: MIT` in frontmatter
+- [ ] If editing `health-engine.md`: all five health skill copies updated
+- [ ] `skills.yaml` updated if adding a new skill or changing version/description
 
 ## Code of conduct
 

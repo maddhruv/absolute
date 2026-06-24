@@ -1,6 +1,33 @@
-# Command: `docs` — Diátaxis-Driven Documentation
+---
+name: absolute-docs
+version: 0.5.0
+description: >
+  Diátaxis-driven documentation for AI coding agents: write, improve, or audit
+  tutorials, how-tos, reference, explanation, and developer docs (README,
+  CONTRIBUTING, ADRs). Detects the docs stack; gates on the outline before
+  writing prose; verifies every claim against the code before it ships.
+  Triggers on "absolute docs", "write docs", "write a tutorial", "write a README",
+  "document this", "improve this doc", "audit our docs".
+category: workflow
+tags:
+  - workflow
+  - documentation
+  - diataxis
+  - readme
+  - tutorials
+  - reference
+platforms:
+  - claude-code
+  - gemini-cli
+  - openai-codex
+  - mcp
+user-invocable: true
+argument-hint: "[target]"
+license: MIT
+maintainers:
+  - github: maddhruv
+---
 
-> Loaded by the `absolute` router when the user runs `/absolute docs …`.
 > Start your first response with the 📚 emoji.
 
 ## Absolute Documentations: Diátaxis-Driven Documentation
@@ -65,7 +92,7 @@ Detect the mode from the request:
 Before asking the user anything, learn everything the repo can teach:
 
 - **Detect the docs stack** (see Stack Detection below) and load
-  `references/docs/docs-stacks.md` if writing site pages.
+  `references/docs-stacks.md` if writing site pages.
 - **Read existing docs** — tone, terminology, heading style, frontmatter schema,
   sidebar/nav structure, where each quadrant lives.
 - **Read the code being documented** — public API surface, actual option names,
@@ -101,9 +128,9 @@ it is cheap to change, everything after it is expensive.
 
 ### Step 4 — Write
 
-- Follow the per-quadrant playbook in `references/docs/` (load the matching file).
-- Write in the project's established voice; follow `references/docs/style-and-voice.md`.
-- Use the stack's components and frontmatter (from `references/docs/docs-stacks.md`);
+- Follow the per-quadrant playbook in `references/` (load the matching file).
+- Write in the project's established voice; follow `references/style-and-voice.md`.
+- Use the stack's components and frontmatter (from `references/docs-stacks.md`);
   plain Markdown when no stack is detected.
 - Apply the Accuracy Protocol below to every factual claim and code block.
 
@@ -170,7 +197,7 @@ Check for marker files in this order; first match wins:
 | none of the above | Plain Markdown | GitHub-flavored Markdown, no components |
 
 Per-stack frontmatter, component vocabulary, nav registration, and
-quadrant-to-component mapping live in `references/docs/docs-stacks.md` — load it
+quadrant-to-component mapping live in `references/docs-stacks.md` — load it
 whenever writing pages for a detected stack. Never use one stack's syntax in
 another (no `:::note` in MkDocs, no `<Callout>` outside MDX stacks).
 
@@ -178,7 +205,7 @@ another (no `:::note` in MkDocs, no `<Callout>` outside MDX stacks).
 
 ## Quadrant Rules at a Glance
 
-Full playbooks with templates live in `references/docs/`. The non-negotiables:
+Full playbooks with templates live in `references/`. The non-negotiables:
 
 | Quadrant | Must | Must not |
 |---|---|---|
@@ -189,13 +216,13 @@ Full playbooks with templates live in `references/docs/`. The non-negotiables:
 
 | Developer doc | Quadrant blend | Playbook |
 |---|---|---|
-| README | Landing page: pitch + quickstart (mini-tutorial) + links out | `references/docs/developer-docs.md` |
-| CONTRIBUTING | How-to guide for contributors | `references/docs/developer-docs.md` |
-| ARCHITECTURE | Explanation with reference elements | `references/docs/developer-docs.md` |
-| ADR | Explanation, decision-shaped, immutable once accepted | `references/docs/developer-docs.md` |
-| CHANGELOG | Reference, reverse-chronological, Keep a Changelog format | `references/docs/developer-docs.md` |
-| Runbook | How-to guide under stress: terse, imperative, copy-pasteable | `references/docs/developer-docs.md` |
-| API reference | Reference, generated where possible, hand-written prose around it | `references/docs/reference.md` |
+| README | Landing page: pitch + quickstart (mini-tutorial) + links out | `references/developer-docs.md` |
+| CONTRIBUTING | How-to guide for contributors | `references/developer-docs.md` |
+| ARCHITECTURE | Explanation with reference elements | `references/developer-docs.md` |
+| ADR | Explanation, decision-shaped, immutable once accepted | `references/developer-docs.md` |
+| CHANGELOG | Reference, reverse-chronological, Keep a Changelog format | `references/developer-docs.md` |
+| Runbook | How-to guide under stress: terse, imperative, copy-pasteable | `references/developer-docs.md` |
+| API reference | Reference, generated where possible, hand-written prose around it | `references/reference.md` |
 
 ---
 
@@ -223,7 +250,7 @@ Documentation that lies is worse than no documentation. For every draft:
 
 ## Style Core
 
-The full guide is `references/docs/style-and-voice.md`. The rules that are never waived:
+The full guide is `references/style-and-voice.md`. The rules that are never waived:
 
 1. One idea per sentence. One purpose per paragraph. One quadrant per page.
 2. Address the reader as "you" (tutorials may use "we" for shared journey).
@@ -278,7 +305,7 @@ Score 1–5 on each axis before presenting. Anything under 4 gets fixed first.
 
 ## References
 
-Load on demand from `references/docs/`:
+Load on demand from `references/`:
 
 | File | Load when |
 |---|---|

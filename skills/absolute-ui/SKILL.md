@@ -1,6 +1,35 @@
-# Command: `ui` — Polished Interface Design
+---
+name: absolute-ui
+version: 0.5.0
+description: >
+  Build polished, intentional UIs with concrete CSS/Tailwind values — typography,
+  color, layout, spacing, dark mode, accessibility, animations, components. Encodes
+  specific, opinionated rules with exact values, not vague advice. Covers buttons,
+  cards, forms, tables, navigation, dashboards, landing pages, onboarding, and more.
+  Triggers on "absolute ui", "design a UI", "style this component", "make this less
+  like AI slop", "fix the spacing/typography/color", "dark mode", "design a pricing
+  page", "make this look better".
+category: workflow
+tags:
+  - workflow
+  - ui
+  - design
+  - css
+  - tailwind
+  - accessibility
+  - typography
+platforms:
+  - claude-code
+  - gemini-cli
+  - openai-codex
+  - mcp
+user-invocable: true
+argument-hint: "[target]"
+license: MIT
+maintainers:
+  - github: maddhruv
+---
 
-> Loaded by the `absolute` router when the user runs `/absolute ui …`.
 > Start your first response with the 🧢 emoji.
 
 ## Absolute UI
@@ -43,7 +72,7 @@ Do NOT trigger this skill for:
 Before writing CSS, commit to an aesthetic direction. The #1 cause of generic-looking UIs is starting with code instead of intent.
 
 1. **Start from user intent, not structure** - Don't begin with headers, footers, or layout scaffolding. Ask: "What is the user trying to do?" If they're searching for accommodations, a search bar is the natural starting point. Only expand UI as user intent expands. For many pages, the core is a heading, an input, and a button - that's all you needed.
-2. **Choose a tone** - Pick one that fits the context: brutalist, editorial, retro-futuristic, organic, luxury, playful, industrial, art deco, soft/pastel, minimalist-sharp. These are starting points - blend and invent your own. See `references/ui/style-catalog.md` for 25 concrete options.
+2. **Choose a tone** - Pick one that fits the context: brutalist, editorial, retro-futuristic, organic, luxury, playful, industrial, art deco, soft/pastel, minimalist-sharp. These are starting points - blend and invent your own. See `references/style-catalog.md` for 25 concrete options.
 3. **Define what's memorable** - What's the one visual choice someone will remember? An unusual color, dramatic typography, a bold layout break, atmospheric texture?
 4. **Creativity is connecting, not inventing** - Study top-tier existing designs in your domain. Gather 3-5 inspirations, note what you like about each, then combine those elements in your own way. Step away before designing - new ideas emerge when you return.
 5. **Vary between projects** - Every design should feel different. If your last 3 outputs used the same fonts, colors, and layout patterns, you're producing slop.
@@ -164,7 +193,7 @@ Use a modular scale with ratio 1.25 (major third). Base size: 16px.
 }
 ```
 
-> Limit to 2 font families max. Pair a distinctive display font with a refined body font - avoid defaulting to Inter, Roboto, or Space Grotesk. See `references/ui/typography.md` for aesthetic-specific pairings.
+> Limit to 2 font families max. Pair a distinctive display font with a refined body font - avoid defaulting to Inter, Roboto, or Space Grotesk. See `references/typography.md` for aesthetic-specific pairings.
 
 ### Build a responsive layout with CSS Grid
 
@@ -302,10 +331,10 @@ Use a modular scale with ratio 1.25 (major third). Base size: 16px.
 | Centering everything | Kills readability, looks like a PowerPoint slide | Left-align body text. Center only hero headlines and CTAs |
 | Inconsistent spacing | Most obvious tell of unpolished UI | Use a 4/8px spacing scale. Same gap everywhere for same context |
 | Using emojis as icons | Render differently across OS/browsers, cannot be styled, break visual consistency, poor a11y | Use a real icon library: Lucide React, React Icons, Heroicons, Phosphor, or Font Awesome |
-| Generic font stack (Inter, Roboto, Arial) | Screams "AI generated this", zero personality | Choose fonts that match an aesthetic direction. See `references/ui/typography.md` |
+| Generic font stack (Inter, Roboto, Arial) | Screams "AI generated this", zero personality | Choose fonts that match an aesthetic direction. See `references/typography.md` |
 | Purple/indigo gradient on white | The #1 AI-generated color cliche | Pick context-specific brand colors. Finance: navy+gold. Creative: coral+teal |
 | Predictable symmetric layouts everywhere | Every section is centered 3-column grid, looks templated | Use asymmetry, overlapping elements, and grid-breaking for marketing pages |
-| Flat solid-color backgrounds | No atmosphere, no depth, feels like a wireframe | Add gradient meshes, subtle grain, or geometric patterns. See `references/ui/atmosphere-and-texture.md` |
+| Flat solid-color backgrounds | No atmosphere, no depth, feels like a wireframe | Add gradient meshes, subtle grain, or geometric patterns. See `references/atmosphere-and-texture.md` |
 | Multi-hue gradients (blue+green, etc.) | Clashing colors, looks amateur | If using gradients, stick to lighter/darker shades of the SAME hue. Or just use a flat color |
 | Redundant UI elements | Arrows that duplicate swipe, borders on already-differentiated elements | Remove anything that doesn't add function. Each element must earn its place |
 | AI-repeated KPIs / metrics | Same stats shown 2-3 times on one page | Show each metric once, in the most relevant location |
@@ -335,35 +364,35 @@ Use a modular scale with ratio 1.25 (major third). Base size: 16px.
 ## References
 
 For detailed guidance on specific UI topics, read the relevant file
-from the `references/ui/` folder:
+from the `references/` folder:
 
-- `references/ui/buttons-and-icons.md` - Button hierarchy, icon sizing, icon-text pairing, states
-- `references/ui/color-and-theming.md` - Color theory, palette generation, dark/light mode, semantic tokens
-- `references/ui/visual-hierarchy.md` - F/Z patterns, focal points, emphasis techniques, whitespace
-- `references/ui/grids-spacing-and-layout.md` - Grid systems, spacing scales, max-widths, layout patterns
-- `references/ui/onboarding.md` - First-run experience, progressive disclosure, empty states, tutorials
-- `references/ui/tables.md` - Data tables, sorting, pagination, responsive tables, number formatting
-- `references/ui/typography.md` - Type scales, font pairing, line height, measure, vertical rhythm
-- `references/ui/accessibility.md` - WCAG 2.2, ARIA patterns, keyboard nav, screen readers, contrast
-- `references/ui/performance.md` - Core Web Vitals, image optimization, font loading, lazy loading
-- `references/ui/responsiveness-and-mobile-nav.md` - Breakpoints, mobile-first, touch targets, navigation
-- `references/ui/landing-pages.md` - Hero sections, CTAs, social proof, conversion patterns, fold
-- `references/ui/shadows-and-borders.md` - Elevation scale, border usage, card design, dividers
-- `references/ui/feedback-and-status.md` - Toasts, tooltips, modals, loading states, empty states, errors
-- `references/ui/micro-animations.md` - Motion principles, transitions, hover effects, scroll animations
-- `references/ui/forms-and-inputs.md` - Text inputs, selects, checkboxes, radios, toggles, file upload, validation
-- `references/ui/navigation.md` - Sidebars, tabs, breadcrumbs, command palettes, mega menus, pagination
-- `references/ui/dashboards.md` - KPI cards, chart containers, filter bars, dashboard grids, real-time updates
-- `references/ui/images-and-media.md` - Avatars, galleries, carousels, video, aspect ratios, placeholders
-- `references/ui/cards-and-lists.md` - Card variants, list views, infinite scroll, virtualization, skeletons
-- `references/ui/microcopy-and-ux-writing.md` - Button labels, error messages, empty states, confirmation copy
-- `references/ui/scroll-patterns.md` - Sticky elements, scroll-snap, infinite scroll, scrollbar styling
-- `references/ui/design-tokens.md` - Token naming, CSS custom properties, theme architecture, multi-brand
-- `references/ui/atmosphere-and-texture.md` - Gradient meshes, noise/grain, glassmorphism, geometric patterns, depth effects
-- `references/ui/style-catalog.md` - 25 UI styles (glassmorphism, brutalism, aurora, etc.) with effects, best-for, quick-pick table
-- `references/ui/product-type-guide.md` - 35 product types mapped to style, colors, fonts, and landing patterns
-- `references/ui/palette-recipes.md` - 4 production-ready OKLCH palettes (SaaS, e-commerce, editorial, fintech), color-mix(), hue reference
-- `references/ui/animation-libraries.md` - Framer Motion, GSAP, spring physics, easing library, performance rules
+- `references/buttons-and-icons.md` - Button hierarchy, icon sizing, icon-text pairing, states
+- `references/color-and-theming.md` - Color theory, palette generation, dark/light mode, semantic tokens
+- `references/visual-hierarchy.md` - F/Z patterns, focal points, emphasis techniques, whitespace
+- `references/grids-spacing-and-layout.md` - Grid systems, spacing scales, max-widths, layout patterns
+- `references/onboarding.md` - First-run experience, progressive disclosure, empty states, tutorials
+- `references/tables.md` - Data tables, sorting, pagination, responsive tables, number formatting
+- `references/typography.md` - Type scales, font pairing, line height, measure, vertical rhythm
+- `references/accessibility.md` - WCAG 2.2, ARIA patterns, keyboard nav, screen readers, contrast
+- `references/performance.md` - Core Web Vitals, image optimization, font loading, lazy loading
+- `references/responsiveness-and-mobile-nav.md` - Breakpoints, mobile-first, touch targets, navigation
+- `references/landing-pages.md` - Hero sections, CTAs, social proof, conversion patterns, fold
+- `references/shadows-and-borders.md` - Elevation scale, border usage, card design, dividers
+- `references/feedback-and-status.md` - Toasts, tooltips, modals, loading states, empty states, errors
+- `references/micro-animations.md` - Motion principles, transitions, hover effects, scroll animations
+- `references/forms-and-inputs.md` - Text inputs, selects, checkboxes, radios, toggles, file upload, validation
+- `references/navigation.md` - Sidebars, tabs, breadcrumbs, command palettes, mega menus, pagination
+- `references/dashboards.md` - KPI cards, chart containers, filter bars, dashboard grids, real-time updates
+- `references/images-and-media.md` - Avatars, galleries, carousels, video, aspect ratios, placeholders
+- `references/cards-and-lists.md` - Card variants, list views, infinite scroll, virtualization, skeletons
+- `references/microcopy-and-ux-writing.md` - Button labels, error messages, empty states, confirmation copy
+- `references/scroll-patterns.md` - Sticky elements, scroll-snap, infinite scroll, scrollbar styling
+- `references/design-tokens.md` - Token naming, CSS custom properties, theme architecture, multi-brand
+- `references/atmosphere-and-texture.md` - Gradient meshes, noise/grain, glassmorphism, geometric patterns, depth effects
+- `references/style-catalog.md` - 25 UI styles (glassmorphism, brutalism, aurora, etc.) with effects, best-for, quick-pick table
+- `references/product-type-guide.md` - 35 product types mapped to style, colors, fonts, and landing patterns
+- `references/palette-recipes.md` - 4 production-ready OKLCH palettes (SaaS, e-commerce, editorial, fintech), color-mix(), hue reference
+- `references/animation-libraries.md` - Framer Motion, GSAP, spring physics, easing library, performance rules
 
 Only load a references file if the current task requires it - they are
 long and will consume context.

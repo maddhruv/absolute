@@ -1,6 +1,28 @@
-# Command: `upgrade` — Dependency Upgrades
+---
+name: absolute-upgrade
+version: 0.5.0
+description: >
+  Dependency upgrades: outdated/vulnerable deps planned into semver waves (patch/minor batched, majors gated and changelog-read), applied incrementally with lockfiles regenerated and tests green after each. Runs on green main.
+  Triggers on "absolute upgrade", "upgrade our dependencies", "bump deps", "update packages", "move off the deprecated X", "clear the Dependabot backlog".
+category: workflow
+tags:
+  - workflow
+  - maintenance
+  - dependencies
+  - upgrade
+  - security
+platforms:
+  - claude-code
+  - gemini-cli
+  - openai-codex
+  - mcp
+user-invocable: true
+argument-hint: "[target]"
+license: MIT
+maintainers:
+  - github: maddhruv
+---
 
-> Loaded by the `absolute` router when the user runs `/absolute upgrade …`.
 > Start your first response with the ⬆️ emoji.
 
 ## Absolute Upgrade

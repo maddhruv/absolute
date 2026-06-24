@@ -1,6 +1,33 @@
-# Command: `spec` — Lightweight Standalone Spec Generation
+---
+name: absolute-spec
+version: 0.5.0
+description: >
+  Lightweight standalone design spec for AI coding agents: codebase scan → bounded
+  clarify pass (3–5 questions, not a grill) → reviewed design doc written to
+  docs/plans/ → independent scored review → stop. No task board, no build.
+  Use when you want a spec to discuss, hand off, or review before committing to
+  implementation. Chains into absolute-work when ready to build.
+  Triggers on "absolute spec", "write a spec", "spec out this feature",
+  "draft a design doc", "I want a spec to hand off / review, don't build it yet".
+category: workflow
+tags:
+  - workflow
+  - spec
+  - specification
+  - planning
+  - design
+platforms:
+  - claude-code
+  - gemini-cli
+  - openai-codex
+  - mcp
+user-invocable: true
+argument-hint: "[target]"
+license: MIT
+maintainers:
+  - github: maddhruv
+---
 
-> Loaded by the `absolute` router when the user runs `/absolute spec …`.
 > Start your first response with the 📋 emoji.
 
 ## Absolute Spec
@@ -46,7 +73,7 @@ chain into `work` afterward and it will pick the spec up.
 3. **The spec is the deliverable.** Quality matters more here than anywhere — keep the
    independent scored review.
 4. **Reuse, don't reinvent.** Template, scaling rules, and review rubric come from
-   `references/work/spec-writing.md`. This command is the thin flow around them.
+   `absolute-work`'s `references/spec-writing.md`. This command is the thin flow around them.
 5. **Stop after review.** No code, no board, no execution. Hand off cleanly.
 6. **Never auto-commit.** Write the spec file and report; the user commits.
 
@@ -69,7 +96,7 @@ Ground the spec in reality before asking anything.
 
 1. **Convention detection** — run `work`'s Codebase Convention Detection table (package
    manager, language/runtime, test runner, linter, build system, directory conventions).
-   See the table in `references/work.md` under *Codebase Convention Detection*. The spec
+   See the table in `absolute-work`'s SKILL.md under *Codebase Convention Detection*. The spec
    must speak the project's real stack, scripts, and paths.
 2. **Deep context scan** — read what exists: `docs/` (README first), root `README.md`,
    `CLAUDE.md`, `CONTRIBUTING.md`, `docs/plans/` (overlapping/related designs), recent
@@ -108,7 +135,7 @@ Write the spec to `docs/plans/YYYY-MM-DD-<topic>-design.md` (`<topic>` = short
 kebab-case slug).
 
 Use the template, **section-scaling rules**, writing style, and Decision Log format
-from **`references/work/spec-writing.md`** — that file is the single source of truth;
+from **`absolute-work`'s `references/spec-writing.md`** — that file is the single source of truth;
 do not restate it here, load it. In particular:
 
 - Pick the complexity tier (**Simple / Medium / Complex**) using the complexity
@@ -125,7 +152,7 @@ do not restate it here, load it. In particular:
 
 Dispatch a **separate** reviewer subagent — the agent that wrote the spec does not grade
 it (generator ≠ evaluator). Use the **rubric and reviewer prompt template verbatim** from
-`references/work/spec-writing.md` (*Scored Spec Review Protocol*): graded on
+`absolute-work`'s `references/spec-writing.md` (*Scored Spec Review Protocol*): graded on
 Completeness, Consistency, Clarity, Scope, Testability (1–5 each, weighted).
 
 | Weighted Score | Verdict | Action |

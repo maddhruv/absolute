@@ -1,40 +1,73 @@
 # Absolute
 
-A focused development workflow engine for AI coding agents: one skill, `absolute`, with eleven commands — a one-time setup (`init`), a build loop (`work`, `spec`, `ui`, `simplify`, `docs`) and an engineering-health family (`upgrade`, `audit`, `prune`, `debt`, `deflake`) — dispatched as `/absolute <command> [target]`.
+A focused development workflow engine for AI coding agents: eleven separate skills, each invoked directly — a one-time setup (`absolute-init`), a build loop (`absolute-work`, `absolute-spec`, `absolute-ui`, `absolute-simplify`, `absolute-docs`) and an engineering-health family (`absolute-upgrade`, `absolute-audit`, `absolute-prune`, `absolute-debt`, `absolute-deflake`).
 
 ## Project Structure
 
 ```
-skills/absolute/            # The single skill
-  SKILL.md                  # Router: frontmatter + routing rules + command table (under 500 lines)
-  README.md                 # Skill landing page (required)
-  references/
-    init.md                                          # one-time setup: interview + detect → config
-    work.md, spec.md, ui.md, simplify.md, docs.md   # build-loop command flows
-    upgrade.md, audit.md, prune.md, debt.md, deflake.md   # engineering-health command flows
-    health-engine.md          # shared loop for the 5 health commands (not a command)
-    work/, ui/, simplify/, docs/            # each command's deep-dive guides (under 400 lines each; spec reuses work/spec-writing.md)
-CONTRIBUTING.md             # Full contribution guide
+skills/
+  absolute-init/              # One-time setup: interview + detect → config
+    SKILL.md                  # Skill definition (frontmatter + full flow)
+    README.md                 # Skill landing page
+  absolute-work/              # End-to-end SDLC
+    SKILL.md
+    README.md
+    references/               # Deep-dive guides (intake-playbook, spec-writing, execution-model, etc.)
+  absolute-spec/              # Lightweight standalone spec
+    SKILL.md
+    README.md
+  absolute-ui/                # Polished UI design
+    SKILL.md
+    README.md
+    references/               # 25 topic guides (typography, color, forms, etc.)
+  absolute-simplify/          # Diff-scoped code simplification
+    SKILL.md
+    README.md
+    references/               # Language guides (golang, javascript, python, catalog)
+  absolute-docs/              # Diátaxis-driven documentation
+    SKILL.md
+    README.md
+    references/               # Doc-type guides (tutorials, how-tos, reference, etc.)
+  absolute-upgrade/           # Dependency upgrades
+    SKILL.md
+    README.md
+    references/health-engine.md
+  absolute-audit/             # Vulnerability & security scan
+    SKILL.md
+    README.md
+    references/health-engine.md
+  absolute-prune/             # Dead code & dependency cleanup
+    SKILL.md
+    README.md
+    references/health-engine.md
+  absolute-debt/              # Lint & typecheck debt paydown
+    SKILL.md
+    README.md
+    references/health-engine.md
+  absolute-deflake/           # Flaky test fixes
+    SKILL.md
+    README.md
+    references/health-engine.md
+CONTRIBUTING.md               # Full contribution guide
 ```
 
-## The Skill
+## Each Skill
 
-- The skill lives in `skills/absolute/` with a `SKILL.md` (the router) and a `README.md`
-- Each command's full flow lives in `references/<command>.md`; deep-dive guides are namespaced under `references/<command>/`
-- The `SKILL.md` command table and routing rules must stay in sync with the `references/<command>.md` files that exist
+- Every skill lives in `skills/absolute-<name>/` with a `SKILL.md` and a `README.md`
+- `SKILL.md` contains the full frontmatter + command flow (no separate router)
+- Deep-dive guides go under `references/` within the skill's directory
+- The five health skills each carry their own copy of `references/health-engine.md`
 
 ## SKILL.md Requirements
 
 - Frontmatter must include: `name`, `version`, `description`, `category`, `tags`, `platforms`, `license`, `maintainers`, `user-invocable`, `argument-hint`
 - Valid categories: engineering, operations, marketing, ai-ml, design, product, devtools, sales, data, infra, monitoring, cloud, writing, workflow, analytics, game-development, developer-tools, communication, video
 - `license` should be `MIT`
-- Description must name each command and list its concrete tasks
-- Total file must be under 500 lines
 - All code examples must be syntactically valid
 
-## Maintaining the Skill
+## Maintaining the Skills
 
-This is a focused single-skill toolkit — `absolute` with eleven commands (setup: `init`; build loop: `work`, `spec`, `ui`, `simplify`, `docs`; engineering health: `upgrade`, `audit`, `prune`, `debt`, `deflake`), not an open registry. The five health commands share `references/health-engine.md`. When editing a command, keep `SKILL.md` (router), `README.md`, and the command's `references/<command>.md` in sync.
+Eleven separate skills — not an open registry. When editing a skill, keep `SKILL.md`, `README.md`, and any files in `references/` in sync. Companion command references use the full skill name (e.g. `/absolute-work`, `/absolute-ui`). When editing `health-engine.md`, update the copy in each of the five health skill directories.
 
 ## Package Manager
 
