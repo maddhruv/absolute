@@ -72,8 +72,21 @@ build, CI, available scripts). Resolve each to the project's **own script** form
 (`npm test`, `make lint`) so cached commands match CI — not raw tools.
 
 Read the actual `package.json` `scripts` / `Makefile` targets to fill `test`, `lint`,
-`typecheck`, `build`. Detect the default branch with `git symbolic-ref --short refs/remotes/origin/HEAD`
+`typecheck`, `format`, `build`. Detect the default branch with `git symbolic-ref --short refs/remotes/origin/HEAD`
 (fallback `main`). Anything you can't resolve confidently → leave it out and ask, or omit.
+
+Also detect, from deps and marker files (omit the whole block if nothing is found):
+
+- **`conventions.format`** — formatter script: `package.json` `format`/`fmt` scripts, a
+  `Makefile` `format` target, `ruff format`, or `gofmt`.
+- **`conventions.ui`** — from `package.json` deps: `framework` (react/vue/svelte/none),
+  `styling` (tailwindcss → tailwind; css-modules; styled-components; else vanilla),
+  `iconLibrary` (lucide-react, @heroicons/*, @phosphor-icons/*, react-icons…),
+  `componentLib` (shadcn marker / @mui/material → mui / @chakra-ui → chakra / none), and
+  `tokensPath` (a tokens/theme CSS or TS file if one exists). Omit if the repo has no UI deps.
+- **`conventions.docs`** — `stack` + `dir` via `absolute-docs`'s Stack Detection marker-file
+  table (`source.config.ts`/fumadocs, `docusaurus.config.*`, Starlight, `mkdocs.yml`,
+  `.vitepress/`, Mintlify, else markdown). Omit if no docs are present.
 
 ## Step 2 — RESOLVE existing config
 
@@ -83,16 +96,60 @@ Treat existing values as the defaults for the interview so the user can keep the
 
 ## Step 3 — INTERVIEW
 
-Ask only these, one at a time, pre-filled with detected/sensible defaults:
+Use `AskUserQuestion` for every preference question. Present options as structured choices with descriptions; mark the recommended/default option first with "(Recommended)" in its label. Ask questions one at a time — wait for each answer before advancing.
 
-1. **Output style** — `normal` (default) or `terse` (compressed, minimal prose).
-2. **Autonomy** — `gate-all` (default; confirm before every change/wave) or `auto-low-risk` (auto-apply obviously-safe health waves, still gate risky ones).
-3. **TDD strictness** — `strict` (default; test-first, red→green) or `pragmatic` (tests required but not strictly first).
-4. **Spec / docs output dir** — default `docs/plans`.
-5. **Relevant families** — `build`, `health`, or both (default both). Trims the no-arg menu.
-6. **Confirm detected conventions** — show the detected `conventions` block; let them correct any command.
+Questions (skip any the existing config already answers, unless user asked to reconfigure):
 
-Skip any question the existing config already answers unless the user wants to change it.
+**Q1 — Output style**
+```
+question: "Output style?"
+header: "Output style"
+options:
+  - label: "normal (Recommended)"
+    description: "Full prose, explanations — good for onboarding or unfamiliar codebases"
+  - label: "terse"
+    description: "Compressed, minimal prose — matches caveman mode"
+```
+
+**Q2 — Autonomy**
+```
+question: "Autonomy level?"
+header: "Autonomy"
+options:
+  - label: "gate-all (Recommended)"
+    description: "Confirm before every change/wave — full control"
+  - label: "auto-low-risk"
+    description: "Auto-apply obviously-safe health waves, gate risky ones"
+```
+
+**Q3 — TDD strictness**
+```
+question: "TDD strictness?"
+header: "TDD"
+options:
+  - label: "strict (Recommended)"
+    description: "Test-first, red→green — failing test must exist before any code"
+  - label: "pragmatic"
+    description: "Tests required but not strictly written first"
+```
+
+**Q4 — Spec / docs output dir**
+Ask as free text: `"Where should spec/work write design docs? (default: docs/plans)"`. Accept blank to keep default.
+
+**Q5 — Relevant families**
+```
+question: "Which command families do you use?"
+header: "Families"
+multiSelect: true
+options:
+  - label: "build (Recommended)"
+    description: "work, spec, ui, simplify, docs"
+  - label: "health (Recommended)"
+    description: "upgrade, audit, prune, debt, deflake"
+```
+
+**Q6 — Confirm detected conventions**
+Show the detected `conventions` block as a code block and ask: `"Are these correct? Reply with any corrections or press enter to accept."`. Accept blank to proceed.
 
 ## Step 4 — WRITE
 
@@ -122,19 +179,39 @@ Both files share `conventions` + `preferences`; the global file wraps them.
     "test": "npm test",
     "lint": "npm run lint",
     "typecheck": "npm run typecheck",
+    "format": "npm run format",
     "build": "npm run build",
     "ci": ".github/workflows/ci.yml",
-    "defaultBranch": "main"
+    "defaultBranch": "main",
+    "ui": {
+      "framework": "react",
+      "styling": "tailwind",
+      "iconLibrary": "lucide-react",
+      "componentLib": "shadcn",
+      "tokensPath": "src/styles/tokens.css"
+    },
+    "docs": {
+      "stack": "fumadocs",
+      "dir": "docs"
+    }
   },
   "preferences": {
     "outputStyle": "normal",
     "autonomy": "gate-all",
     "tdd": "strict",
     "specDir": "docs/plans",
-    "families": ["build", "health"]
+    "boardTracking": "gitignored",
+    "families": ["build", "health"],
+    "health": {
+      "protectedPaths": ["dist/**", "vendor/**", "**/*.generated.*"],
+      "deflakeRuns": 20
+    }
   }
 }
 ```
+
+The `conventions.ui` and `conventions.docs` blocks are omitted entirely when nothing is
+detected (no UI deps, no docs stack), keeping the file minimal.
 
 **`~/.absolute/config.json` (user/global):**
 
@@ -164,11 +241,17 @@ Field meanings:
 | Field | Values | Effect |
 |---|---|---|
 | `conventions.*` | strings | Cached stack/scripts every command runs through instead of re-detecting. |
+| `conventions.format` | string | Formatter script — `simplify`/`debt` run it instead of re-detecting. |
+| `conventions.ui` | object | Cached `framework`/`styling`/`iconLibrary`/`componentLib`/`tokensPath` — `ui` adopts these instead of assuming Tailwind / guessing the icon library. |
+| `conventions.docs` | object | Cached docs `stack` + `dir` — `docs` skips marker-file re-detection. |
 | `preferences.outputStyle` | `normal` \| `terse` | Verbosity of command responses. |
 | `preferences.autonomy` | `gate-all` \| `auto-low-risk` | Whether health commands auto-apply safe waves. |
 | `preferences.tdd` | `strict` \| `pragmatic` | `work`'s test-first rigor. |
 | `preferences.specDir` | path | Where `spec`/`work` write design docs. |
+| `preferences.boardTracking` | `gitignored` \| `git-tracked` | Whether `work`'s `.absolute-work/board.md` is committed — set once instead of asked each intake. |
 | `preferences.families` | `["build","health"]` subset | Trims the no-arg menu to what you use. |
+| `preferences.health.protectedPaths` | glob[] | Never-delete globs `prune` honors (generated/vendored code). |
+| `preferences.health.deflakeRuns` | int | Default N repeat-runs `deflake` uses to establish flakiness. |
 
 ---
 
@@ -180,8 +263,10 @@ At the start of any command, resolve effective config by overlaying, highest win
 2. `~/.absolute/config.json` → `projects["<cwd absolute path>"]`
 3. `~/.absolute/config.json` → `defaults`
 
-Shallow-merge `conventions` and `preferences` separately. If none exist, there is no
-config — the command soft-recommends `init` and uses on-the-fly detection.
+Shallow-merge `conventions` and `preferences` separately; merge the nested `conventions.ui`,
+`conventions.docs`, and `preferences.health` blocks one level deeper so a partial override
+doesn't drop sibling keys. If none exist, there is no config — the command soft-recommends
+`init` and uses on-the-fly detection.
 
 ---
 
@@ -197,6 +282,10 @@ config — the command soft-recommends `init` and uses on-the-fly detection.
 
 ## Companion commands
 
-- **`/absolute work`** — the main consumer of cached conventions + `tdd`/`autonomy` prefs.
-- **`/absolute-upgrade|audit|prune|debt|deflake`** — health family reads `conventions` for DETECT and `autonomy` for gating.
+- **`/absolute work`** — the main consumer of cached conventions + `tdd`/`autonomy`/`boardTracking` prefs.
+- **`/absolute spec`** — reads `conventions` + `specDir` instead of re-detecting.
+- **`/absolute ui`** — reads `conventions.ui` (framework, styling, icon library, tokens path).
+- **`/absolute simplify`** — reads cached `test`/`lint`/`format`/`typecheck` for auto-verify.
+- **`/absolute docs`** — reads `conventions.docs` (stack, dir), skipping marker re-detection.
+- **`/absolute-upgrade|audit|prune|debt|deflake`** — health family reads `conventions` for DETECT, `autonomy` for gating, and `preferences.health.*` (`prune` protectedPaths, `deflake` deflakeRuns).
 - Re-run **`/absolute init`** anytime conventions or preferences change.

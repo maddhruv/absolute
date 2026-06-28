@@ -94,10 +94,13 @@ ask, get answers, then proceed straight through to a reviewed spec.
 
 Ground the spec in reality before asking anything.
 
-1. **Convention detection** — run `work`'s Codebase Convention Detection table (package
-   manager, language/runtime, test runner, linter, build system, directory conventions).
-   See the table in `absolute-work`'s SKILL.md under *Codebase Convention Detection*. The spec
-   must speak the project's real stack, scripts, and paths.
+1. **Convention detection** — read cached config first: if `.absolute.config.json` or
+   `~/.absolute/config.json` exists (from `/absolute init`), resolve the effective config
+   (project file → global `projects["<cwd>"]` → global `defaults`) and use its `conventions`,
+   detecting only what's missing. No config → soft-suggest `init` and run `work`'s Codebase
+   Convention Detection table (package manager, language/runtime, test runner, linter, build
+   system, directory conventions; see `absolute-work`'s SKILL.md under *Codebase Convention
+   Detection*). The spec must speak the project's real stack, scripts, and paths.
 2. **Deep context scan** — read what exists: `docs/` (README first), root `README.md`,
    `CLAUDE.md`, `CONTRIBUTING.md`, `docs/plans/` (overlapping/related designs), recent
    commits (last 10–20), package manifests, and the directories the feature touches.
@@ -131,8 +134,8 @@ in an `## Open Questions` / assumptions section instead.
 
 ### Step 3 — WRITE
 
-Write the spec to `docs/plans/YYYY-MM-DD-<topic>-design.md` (`<topic>` = short
-kebab-case slug).
+Write the spec to `<specDir>/YYYY-MM-DD-<topic>-design.md` (`<topic>` = short kebab-case
+slug). `<specDir>` is `preferences.specDir` from config when present, else `docs/plans`.
 
 Use the template, **section-scaling rules**, writing style, and Decision Log format
 from **`absolute-work`'s `references/spec-writing.md`** — that file is the single source of truth;

@@ -96,6 +96,8 @@ can't *prove* is dead, gets confirmed with the user or deferred — never auto-r
 - Removing a dep: drop it from the manifest, regenerate the lockfile, rebuild.
 - Don't delete: generated files, vendored code, public-API surface, or anything load-bearing
   for a config/plugin you can't trace. Report those as "suspected dead, needs human call".
+  Treat `preferences.health.protectedPaths` from config as never-delete globs — anything
+  matching is out of scope even if a tool flags it.
 
 ---
 

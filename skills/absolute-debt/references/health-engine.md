@@ -39,10 +39,15 @@ These commands are **standing-health** work on the whole repo, distinct from `si
 ## Step 1 — DETECT
 
 Auto-detect the stack so every command speaks the project's real tools. If
-`.absolute.config.json` or `~/.absolute/config.json` exists (from `/absolute init`), read
-its cached `conventions` first and skip re-detection; otherwise use the **Codebase
+`.absolute.config.json` or `~/.absolute/config.json` exists (from `/absolute init`), resolve
+the effective config (project file → global `projects["<cwd>"]` → global `defaults`), read
+its cached `conventions` first, and skip re-detection; otherwise use the **Codebase
 Convention Detection** table in `references/work.md` (package manager, language/runtime,
 test runner, linter/formatter, build, CI, available scripts).
+
+Also surface `preferences.health.*` to the command flow when present: `protectedPaths`
+(never-delete globs `prune` honors) and `deflakeRuns` (default repeat-run count for
+`deflake`). `preferences.autonomy` continues to gate whether safe waves auto-apply.
 
 Always drive fixes through the project's own scripts (`npm test`, `make lint`), never raw
 tools, so results match CI. Note the ecosystem(s) — each command reference lists the

@@ -67,6 +67,26 @@ Do NOT trigger this skill for:
 
 ---
 
+## Read config first
+
+Before writing any markup or CSS, read cached config: if `.absolute.config.json` or
+`~/.absolute/config.json` exists (from `/absolute init`), resolve the effective config
+(project file → global `projects["<cwd>"]` → global `defaults`) and adopt `conventions.ui`:
+
+- **`framework`** — generate for the project's framework (react/vue/svelte), not a default.
+- **`styling`** — use the project's system (tailwind / css-modules / styled-components /
+  vanilla) instead of assuming Tailwind.
+- **`iconLibrary`** — pull icons from the project's library (principle 7 mandates real icons);
+  don't introduce a different one.
+- **`componentLib`** — build on the existing component library (shadcn/mui/chakra) when set.
+- **`tokensPath`** — read existing design tokens from this file and extend them, don't invent
+  a parallel scale.
+
+Detect from `package.json` deps only for whatever config doesn't supply; with no config,
+soft-suggest `init` and detect on the fly.
+
+---
+
 ## Design thinking
 
 Before writing CSS, commit to an aesthetic direction. The #1 cause of generic-looking UIs is starting with code instead of intent.

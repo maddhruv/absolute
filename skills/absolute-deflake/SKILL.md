@@ -49,7 +49,8 @@ Not for tests that fail *deterministically* — that's a real bug or a real regr
 
 ## What it scans
 
-Establish flakiness empirically — a test isn't flaky because someone said so:
+Establish flakiness empirically — a test isn't flaky because someone said so. Use
+`preferences.health.deflakeRuns` from config as the default N for repeat-runs (else 20):
 
 | Ecosystem | Repeat-run / detect |
 |---|---|

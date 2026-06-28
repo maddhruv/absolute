@@ -184,7 +184,11 @@ approves explicitly.
 
 ## Stack Detection
 
-Check for marker files in this order; first match wins:
+Read cached config first: if `.absolute.config.json` or `~/.absolute/config.json` exists
+(from `/absolute init`), resolve the effective config (project file → global
+`projects["<cwd>"]` → global `defaults`) and use `conventions.docs.stack` + `conventions.docs.dir`
+— skip the marker-file scan and write pages under `docs.dir`. With no config (or no `docs`
+block), soft-suggest `init` and detect by checking for marker files in this order; first match wins:
 
 | Marker | Stack | Content format |
 |---|---|---|

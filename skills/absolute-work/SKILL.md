@@ -45,30 +45,6 @@ The lifecycle has 6 phases:
 
 ---
 
-## Activation Banner
-
-**At the very start of every Absolute Work invocation**, before any other output,
-display this ASCII art banner:
-
-```
- █████╗ ██████╗ ███████╗ ██████╗ ██╗     ██╗   ██╗████████╗███████╗
-██╔══██╗██╔══██╗██╔════╝██╔═══██╗██║     ██║   ██║╚══██╔══╝██╔════╝
-███████║██████╔╝███████╗██║   ██║██║     ██║   ██║   ██║   █████╗
-██╔══██║██╔══██╗╚════██║██║   ██║██║     ██║   ██║   ██║   ██╔══╝
-██║  ██║██████╔╝███████║╚██████╔╝███████╗╚██████╔╝   ██║   ███████╗
-╚═╝  ╚═╝╚═════╝ ╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝    ╚═╝   ╚══════╝
-██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗
-██║    ██║██╔═══██╗██╔══██╗██║ ██╔╝
-██║ █╗ ██║██║   ██║██████╔╝█████╔╝
-██║███╗██║██║   ██║██╔══██╗██╔═██╗
-╚███╔███╔╝╚██████╔╝██║  ██║██║  ██╗
- ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
-```
-
-Follow the banner immediately with: `Entering plan mode — phase-gated lifecycle active`
-
----
-
 ## The Phase Gate Rule
 
 **Absolute Work STOPS at the end of every phase and waits for the user's explicit "go"
@@ -115,7 +91,9 @@ without explicit user confirmation.**
 
 **Before INTAKE begins**, auto-detect the project's conventions so every phase is grounded
 in reality, not assumptions. If `.absolute.config.json` or `~/.absolute/config.json` exists
-(from `/absolute init`), read its cached `conventions` first and detect only what's missing.
+(from `/absolute init`), resolve the effective config (project file → global `projects["<cwd>"]`
+→ global `defaults`), read its cached `conventions` first, and detect only what's missing. The
+`preferences` (`tdd`, `autonomy`, `specDir`, `boardTracking`) likewise drive later phases.
 
 | Signal | Files to Check |
 |---|---|
@@ -268,7 +246,8 @@ single task. When in doubt, serialize. See `references/execution-model.md` and `
 ### Per-task plan
 For each task: files to create/modify, test files (TDD — written first), approach, acceptance
 criteria, and concrete test cases (happy path, edge, error). Write everything to
-`.absolute-work/board.md`. Ask the user during intake whether the board is git-tracked or gitignored.
+`.absolute-work/board.md`. Use `preferences.boardTracking` from config for the git-tracked vs
+gitignored decision; only ask during intake when config doesn't set it.
 
 Present the ASCII dependency graph + wave/sequence plan.
 

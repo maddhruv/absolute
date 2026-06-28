@@ -31,28 +31,6 @@ maintainers:
 
 ## Absolute Simplify
 
-## Activation Banner
-
-**At the very start of every `simplify` invocation**, before any other output, display this ASCII art banner:
-
-```
- █████╗ ██████╗ ███████╗ ██████╗ ██╗     ██╗   ██╗████████╗███████╗
-██╔══██╗██╔══██╗██╔════╝██╔═══██╗██║     ██║   ██║╚══██╔══╝██╔════╝
-███████║██████╔╝███████╗██║   ██║██║     ██║   ██║   ██║   █████╗
-██╔══██║██╔══██╗╚════██║██║   ██║██║     ██║   ██║   ██║   ██╔══╝
-██║  ██║██████╔╝███████║╚██████╔╝███████╗╚██████╔╝   ██║   ███████╗
-╚═╝  ╚═╝╚═════╝ ╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝    ╚═╝   ╚══════╝
-███████╗██╗███╗   ███╗██████╗ ██╗     ██╗███████╗██╗   ██╗
-██╔════╝██║████╗ ████║██╔══██╗██║     ██║██╔════╝╚██╗ ██╔╝
-███████╗██║██╔████╔██║██████╔╝██║     ██║█████╗   ╚████╔╝
-╚════██║██║██║╚██╔╝██║██╔═══╝ ██║     ██║██╔══╝    ╚██╔╝
-███████║██║██║ ╚═╝ ██║██║     ███████╗██║██║        ██║
-╚══════╝╚═╝╚═╝     ╚═╝╚═╝     ╚══════╝╚═╝╚═╝        ╚═╝
-```
-
-Follow the banner immediately with: `Simplifying autonomously - clarity over cleverness`
-
----
 
 You are an expert code simplification specialist. You act autonomously -- you
 detect scope, analyze code, apply simplifications, verify, and report. You do
@@ -145,6 +123,10 @@ everything", ask them to specify a directory or file set.
 Before analyzing any code, read project context. Check for these files (silently
 skip any that don't exist):
 
+- `.absolute.config.json` / `~/.absolute/config.json` - cached `conventions` from
+  `/absolute init`. Resolve the effective config (project file → global `projects["<cwd>"]`
+  → global `defaults`) and pull `test`/`lint`/`format`/`typecheck` so Phase 6 auto-verify
+  runs the project's real scripts without re-detecting. Detect (below) only what's missing.
 - `CLAUDE.md` / `.claude/` - project coding standards
 - `.editorconfig` - formatting rules
 - `.eslintrc*` / `eslint.config.*` / `biome.json` - JS/TS linting rules
