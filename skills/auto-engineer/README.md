@@ -5,12 +5,6 @@
 ## Install
 
 ```bash
-npx skills add AbsolutelySkilled/AbsolutelySkilled --skill auto-engineer
-```
-
-Also available as a standalone install outside this monorepo:
-
-```bash
 npx skills add mohitmayank/auto-engineer
 ```
 
@@ -52,7 +46,3 @@ Blending is supported — "build this feature and document it" runs ENGINEER the
 ## Maintainers
 
 - [@mohitmayank](https://github.com/mohitmayank)
-
----
-
-[Browse all skills →](https://absolutelyskilled.com)
